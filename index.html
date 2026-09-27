@@ -1,1 +1,1573 @@
-Hello world
+<!DOCTYPE html>
+
+<html lang="id" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>IDCraft Studio - Generator ID Card Mahasiswa &amp; Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin:0; padding:0; }
+      body { overscroll-behavior:none; }
+      main>:first-child { margin-top:0!important; }
+      main>:last-child { margin-bottom:0!important; }
+    }
+    ::-webkit-scrollbar { display:none; }
+    .guilloche-pattern {
+      background-image: radial-gradient(rgba(0,105,111,0.08) 1px, transparent 0), radial-gradient(rgba(97,0,198,0.06) 1px, transparent 0);
+      background-size: 14px 14px;
+      background-position: 0 0, 7px 7px;
+    }
+    .metallic-chip {
+      background: linear-gradient(135deg, #f7d070 0%, #e0a928 35%, #b58014 70%, #ffd479 100%);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.8), inset 0 -1px 2px rgba(0,0,0,0.35), 0 3px 6px rgba(0,0,0,0.15);
+    }
+    .studio-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    .holo-foil {
+      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.4) 45%, rgba(0,242,254,0.35) 50%, rgba(127,4,255,0.35) 55%, transparent 80%);
+      pointer-events: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#faf8ff",
+            "background": "#faf8ff",
+            "primary-container": "#00f2fe",
+            "tertiary-container": "#c1ddff",
+            "inverse-primary": "#00dce6",
+            "outline": "#6a7a7b",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-background": "#181b25",
+            "surface": "#faf8ff",
+            "surface-container-high": "#e6e7f5",
+            "on-primary-fixed-variant": "#004f53",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#d5baff",
+            "on-secondary-container": "#e7d5ff",
+            "on-primary-container": "#006a70",
+            "on-tertiary-fixed": "#001d34",
+            "primary": "#00696f",
+            "tertiary": "#00629f",
+            "on-tertiary-fixed-variant": "#004a7a",
+            "outline-variant": "#b9cacb",
+            "tertiary-fixed-dim": "#9bcbff",
+            "inverse-on-surface": "#eff0fe",
+            "on-error-container": "#93000a",
+            "primary-fixed-dim": "#00dce6",
+            "on-surface": "#181b25",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#6100c6",
+            "on-secondary-fixed": "#270057",
+            "on-secondary-fixed-variant": "#5e00c1",
+            "surface-container": "#ecedfb",
+            "inverse-surface": "#131722",
+            "surface-container-low": "#f2f3ff",
+            "on-tertiary-container": "#0063a1",
+            "surface-variant": "#e0e2ef",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#ecdcff",
+            "on-surface-variant": "#3a494b",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e0e2ef",
+            "secondary-container": "#7f04ff",
+            "primary-fixed": "#6ff6ff",
+            "on-primary-fixed": "#002022",
+            "surface-tint": "#00696f",
+            "surface-dim": "#d8d9e7"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<!-- Global Top Navbar -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+<div class="h-16 w-full px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-[18px] tracking-tight text-on-surface">IDCraft</span>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed uppercase tracking-wider">v3.0 Pro Studio</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Generator ID Card Mahasiswa &amp; Profesional</span>
+</div>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-1.5 p-1 rounded-xl bg-surface-container-low border border-surface-container-high">
+<button class="px-3.5 py-1.5 transition-colors bg-surface-container-lowest text-primary font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_square</span>
+<span class="">Studio Generator</span>
+</button>
+<button class="text-xs font-semibold px-3 py-1.5 text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 rounded-lg hover:bg-surface-container cursor-pointer" id="navBtnTemplates" onclick="openTemplatesModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span class="">Pustaka Template</span>
+</button>
+<button class="text-xs font-semibold px-3 py-1.5 text-on-surface-variant hover:text-emerald-700 transition-colors flex items-center gap-1.5 rounded-lg hover:bg-surface-container cursor-pointer" id="navBtnValidate" onclick="openValidationModal()" type="button">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+<span class="">Validasi Spesifikasi</span>
+</button>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 transition-all cursor-pointer" onclick="openValidationModal()" title="Lihat Status Uji Standar CR80" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-xs font-semibold">ISO/IEC 7810 Ready</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant" title="Enkripsi Standar Perbankan">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white text-xs font-bold shadow-xs">
+        BR
+      </div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="w-full pt-16 flex-1 bg-background flex flex-col">
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-4rem)]">
+<!-- LEFT PANEL: Dynamic Customization Studio -->
+<div class="lg:col-span-6 xl:col-span-5 bg-surface-container-lowest border-r border-surface-container-high/60 p-4 sm:p-6 lg:p-7 flex flex-col justify-between overflow-y-auto space-y-6">
+<div class="space-y-5">
+<!-- Header & Mode Pill Switcher -->
+<div class="space-y-3">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span class="">Konfigurator ID Card Multifungsi</span>
+</div>
+<div class="flex items-start justify-between">
+<div>
+<h1 class="text-xl sm:text-2xl font-black text-on-surface tracking-tight">Kustomisasi ID Card Digital</h1>
+<p class="text-xs sm:text-sm text-on-surface-variant mt-0.5">Pilih tipe kartu akademik atau korporasi, sesuaikan identitas, dan dapatkan pratinjau live.</p>
+</div>
+<button class="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-primary bg-primary/10 hover:bg-primary/20 px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer" onclick="openTemplatesModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark</span>
+<span class="">Preset</span>
+</button>
+</div>
+<!-- Dual-Mode Switcher: Mahasiswa (KTM) vs Profesional (Kantor) -->
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-surface-container-high gap-1">
+<button class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer" id="modeAcademic" onclick="switchCardMode('academic')" type="button">
+<span class="material-symbols-outlined text-[18px]">school</span>
+<span class="">Kartu Mahasiswa (KTM)</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer" id="modeCorporate" onclick="switchCardMode('corporate')" type="button">
+<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
+<span class="">ID Card Profesional / Kantor</span>
+</button>
+</div>
+</div>
+<!-- Input Data Form -->
+<div class="space-y-4 pt-1">
+<!-- 1. Nama Lengkap -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputName">
+<span class="material-symbols-outlined text-primary text-[16px]">person</span>
+<span class="">Nama Lengkap Pemegang</span>
+</label>
+<span class="text-[10px] font-bold text-primary px-1.5 py-0.5 rounded bg-primary/10">Wajib Diisi</span>
+</div>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-semibold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-outline" id="inputName" placeholder="Contoh: Bima Rizky Bakhtiar" type="text" value="Bima Rizky Bakhtiar"/>
+</div>
+<!-- 2. Dual Fields: Peran/Jurusan & Nomor Induk -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputRole" id="labelRole"><span class="material-symbols-outlined text-primary text-[16px]">school</span><span class="">Program Studi / Jurusan</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-medium focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputRole" placeholder="Contoh: Teknik Informatika" type="text" value="Teknik Informatika &amp; Sistem Data"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputIdNumber" id="labelIdNumber"><span class="material-symbols-outlined text-primary text-[16px]">tag</span><span class="">Nomor Induk Mahasiswa (NIM)</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-mono font-medium tracking-wide focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputIdNumber" placeholder="NIM / NIP / EMP-ID" type="text" value="NIM: 202401099238"/>
+</div>
+</div>
+<!-- 3. Institusi / Perusahaan & Masa Berlaku -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+<div class="sm:col-span-2 space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputOrg" id="labelOrg"><span class="material-symbols-outlined text-primary text-[16px]">account_balance</span><span class="">Universitas / Institusi</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-semibold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputOrg" placeholder="Nama Universitas atau Korporasi" type="text" value="UNIVERSITAS DIGITAL NUSANTARA"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputValidity">
+<span class="material-symbols-outlined text-primary text-[16px]">event_available</span>
+<span class="">Masa Berlaku</span>
+</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-xs font-mono font-bold tracking-wider focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputValidity" placeholder="Contoh: 2028" type="text" value="BERLAKU: 2028"/>
+</div>
+</div>
+<!-- 4. Foto Profil & Avatar Uploader -->
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">photo_camera</span>
+<span class="">Pasfoto Identitas Resmi</span>
+</label>
+<div class="p-3 rounded-2xl border border-surface-container-high bg-surface-container-low flex items-center gap-4">
+<div class="relative w-14 h-18 sm:w-16 sm:h-20 rounded-xl overflow-hidden shadow-sm shrink-0 border-2 border-primary/40 bg-surface-container-high">
+<img alt="Foto Profil Resmi" class="w-full h-full object-cover object-top" id="formAvatarPreview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGEOMlBMnoTqoUa1Cv45gUsustcNBKFePrEtHBQidyLIZLd6UmGUOP5tYYY2sP-AGPlgdqpng-maEoUhsYUY7igZNgXBA90ah2BkoU04i2yG-4medF0ObO4cVP3N_fnm-bHENWBmJJv9939tGye0XOq9r9dTu1XQx93J0nAZburwGQV7QIW65Pm3NBWjwzBuC3bDX1dUrdi8P6uTHjbvRvCnaiuaNDQoyP9Tzm2j8QSgB4x3nenf97"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<label class="cursor-pointer px-3 py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-container text-on-surface text-xs font-bold inline-flex items-center gap-1.5 shadow-2xs transition-colors" for="avatarFileInput">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span class="">Ganti Foto</span>
+</label>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-medium transition-colors cursor-pointer" onclick="setAvatarPreset('student')" type="button">
+                    Foto Mahasiswa
+                  </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-medium transition-colors cursor-pointer" onclick="setAvatarPreset('pro')" type="button">
+                    Foto Eksekutif
+                  </button>
+<input accept="image/*" class="hidden" id="avatarFileInput" onchange="handlePhotoUpload(event)" type="file"/>
+</div>
+<p class="text-[11px] text-on-surface-variant">Standar pasfoto 3×4 atau 4×6 cm. Otomatis diselaraskan ke resolusi kartu cetak.</p>
+</div>
+</div>
+</div>
+<!-- 5. Template Gaya & Tata Letak -->
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center justify-between">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">palette</span>
+<span class="">Template Gaya Desain</span>
+</span>
+<button class="text-[11px] font-bold text-primary hover:underline cursor-pointer" id="btnOpenTemplatesLink" onclick="openTemplatesModal()" type="button">Buka Pustaka Lengkap →</button>
+</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<button class="style-btn p-2 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20" id="styleMinimal" onclick="setDesignStyle('minimal')" type="button">
+<span class="block text-xs font-extrabold">Minimal Tech</span>
+<span class="block text-[10px] text-on-surface-variant">Clean &amp; Presisi</span>
+</button>
+<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleAcademic" onclick="setDesignStyle('academic')" type="button">
+<span class="block text-xs font-extrabold">Formal Klasik</span>
+<span class="block text-[10px] text-on-surface-variant">Universitas Resmi</span>
+</button>
+<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleHolo" onclick="setDesignStyle('holo')" type="button">
+<span class="block text-xs font-extrabold">Holographic</span>
+<span class="block text-[10px] text-on-surface-variant">Cyber Modern</span>
+</button>
+<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleExecutive" onclick="setDesignStyle('executive')" type="button">
+<span class="block text-xs font-extrabold">Executive</span>
+<span class="block text-[10px] text-on-surface-variant">Premium Dark</span>
+</button>
+</div>
+</div>
+<!-- 6. Aksen Warna & Orientasi Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Palet Warna -->
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface flex items-center justify-between">
+<span class="">Aksen Warna Identitas</span>
+<span class="text-[10px] font-mono font-bold text-primary" id="paletteNameLabel">Electric Blue</span>
+</label>
+<div class="flex items-center gap-2">
+<button class="palette-btn w-8 h-8 rounded-full bg-[#00696f] ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest transition-all cursor-pointer" data-color="blue" onclick="setColorTheme('blue')" title="Electric Blue" type="button"></button>
+<button class="palette-btn w-8 h-8 rounded-full bg-[#4f46e5] hover:opacity-90 transition-all cursor-pointer" data-color="indigo" onclick="setColorTheme('indigo')" title="Deep Indigo" type="button"></button>
+<button class="palette-btn w-8 h-8 rounded-full bg-[#059669] hover:opacity-90 transition-all cursor-pointer" data-color="emerald" onclick="setColorTheme('emerald')" title="Emerald Teal" type="button"></button>
+<button class="palette-btn w-8 h-8 rounded-full bg-[#be123c] hover:opacity-90 transition-all cursor-pointer" data-color="crimson" onclick="setColorTheme('crimson')" title="Crimson Tech" type="button"></button>
+<button class="palette-btn w-8 h-8 rounded-full bg-[#0f172a] hover:opacity-90 transition-all border border-neutral-700 cursor-pointer" data-color="onyx" onclick="setColorTheme('onyx')" title="Onyx Black" type="button"></button>
+</div>
+</div>
+<!-- Orientasi Kartu -->
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface">Orientasi Cetak</label>
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-surface-container-high gap-1">
+<button class="py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer" id="btnOrientPortrait" onclick="setOrientation('portrait')" type="button">
+<span class="material-symbols-outlined text-[16px]">crop_portrait</span>
+<span class="">Vertikal</span>
+</button>
+<button class="py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer" id="btnOrientLandscape" onclick="setOrientation('landscape')" type="button">
+<span class="material-symbols-outlined text-[16px]">crop_landscape</span>
+<span class="">Horizontal</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 7. Fitur Keamanan Interaktif & Aksesoris Kartu -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">security</span>
+<span class="">Fitur Keamanan &amp; Modul Digital</span>
+</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkChip" onchange="toggleFeature('chip')" type="checkbox"/>
+<span class="text-xs font-semibold text-on-surface">Smart Chip</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkQR" onchange="toggleFeature('qr')" type="checkbox"/>
+<span class="text-xs font-semibold text-on-surface">QR Enkripsi</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBarcode" onchange="toggleFeature('barcode')" type="checkbox"/>
+<span class="text-xs font-semibold text-on-surface">ISO Barcode</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBadge" onchange="toggleFeature('badge')" type="checkbox"/>
+<span class="text-xs font-semibold text-on-surface">Status Badge</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Tombol Aksi Download / Simpan / Reset -->
+<div class="pt-3 space-y-2.5">
+<button class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-primary via-primary to-secondary text-white font-bold text-sm shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] flex items-center justify-center gap-2 transition-all cursor-pointer" onclick="triggerDownload()" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="" id="btnDownloadText">Unduh ID Card (HD PNG / PDF Siap Cetak)</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-3 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="saveTemplateNotice()" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span class="" id="saveBtnText">Simpan Template</span>
+</button>
+<button class="py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-error hover:bg-error-container/40 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="resetStudioDefaults()" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span class="">Reset Data Default</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trust Badges Footer -->
+<div class="pt-4 border-t border-surface-container-high/60 flex items-center justify-between text-on-surface-variant text-[11px]">
+<button class="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer" onclick="openValidationModal()" type="button">
+<span class="w-2 h-2 rounded-full bg-primary"></span> ISO/IEC 7810 ID-1 (CR80)
+</button>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> 300 DPI High-Density Print</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> 256-bit Hash QR</span>
+</div>
+</div>
+<!-- RIGHT PANEL: Ultra-Realistic Live Dark Studio Environment -->
+<div class="lg:col-span-6 xl:col-span-7 bg-[#0b0e14] relative overflow-hidden flex flex-col justify-between p-4 sm:p-6 lg:p-8 studio-grid">
+<!-- Ambient Studio Lighting Effects -->
+<div class="absolute -top-36 -right-36 w-[450px] h-[450px] rounded-full bg-[#00696f]/20 blur-[120px] pointer-events-none" id="ambientAura1" style="background-color: rgba(0, 105, 111, 0.2);"></div>
+<div class="absolute -bottom-36 -left-36 w-[450px] h-[450px] rounded-full bg-[#6100c6]/20 blur-[120px] pointer-events-none" id="ambientAura2"></div>
+<div class="absolute inset-0 bg-radial from-transparent via-[#0b0e14]/50 to-[#0b0e14] pointer-events-none"></div>
+<!-- Studio Floating Toolbar -->
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.04] border border-white/10 p-2 sm:px-3 rounded-2xl shadow-xl">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+<span class="text-xs font-bold text-white uppercase tracking-wider" id="studioBadgeStatus">LIVE STUDIO • CR80 HORIZONTAL (LANDSCAPE)</span>
+</div>
+<!-- Controls: Flip Side & Zoom Scale -->
+<div class="flex items-center gap-2">
+<div class="flex items-center p-1 rounded-xl bg-white/[0.06] border border-white/10">
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1" id="btnSideFront" onclick="setCardFace('front')" type="button">
+<span class="material-symbols-outlined text-[14px]">id_card</span>
+<span class="">Tampak Depan</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1" id="btnSideBack" onclick="setCardFace('back')" type="button">
+<span class="material-symbols-outlined text-[14px]">flip</span>
+<span class="">Tampak Belakang</span>
+</button>
+</div>
+<div class="hidden sm:flex items-center p-1 rounded-xl bg-white/[0.06] border border-white/10">
+<button class="zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer" onclick="setStudioZoom(0.85)" type="button">85%</button>
+<button class="zoom-btn px-2.5 py-1 rounded text-xs font-bold text-white bg-white/20 cursor-pointer" onclick="setStudioZoom(1.0)" type="button">100%</button>
+<button class="zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer" onclick="setStudioZoom(1.15)" type="button">115%</button>
+</div>
+</div>
+</div>
+<!-- Card Stage Centerpiece -->
+<div class="relative z-10 flex-1 my-4 flex flex-col items-center justify-center">
+<!-- Realistic Lanyard Strap & Clip Mount -->
+<div class="w-24 h-10 bg-neutral-800/90 backdrop-blur-md rounded-t-xl -mb-3 z-30 flex flex-col items-center shadow-2xl border border-white/10 transition-all duration-300 opacity-0 pointer-events-none hidden" data-figma-layer="Lanyard Clip &amp; Slot" id="lanyardClip"></div>
+<!-- Scalable Card Wrapper -->
+<div class="transition-transform duration-300 ease-out origin-center" id="cardScaleContainer" style="transform: scale(1);">
+<!-- ==================== TAMPAK DEPAN (FRONT FACE) ==================== -->
+<div class="rounded-[22px] relative overflow-hidden shadow-[0_28px_65px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.18)] transition-all duration-300 bg-white text-slate-900 select-none flex flex-col justify-between p-5 border-2 border-primary/30 w-[340px] sm:w-[540px] md:w-[560px] h-[348px]" data-figma-layer="Frame: Card Container (Landscape CR80)" id="cardFaceFront" style="background: rgb(255, 255, 255);">
+<!-- Background Watermark / Guilloche -->
+<div class="guilloche-pattern absolute inset-0 opacity-40 pointer-events-none" data-figma-layer="Layer 1: Background &amp; Hologram Mesh" id="cardGuilloche"></div>
+<div class="holo-foil absolute inset-0 opacity-30 pointer-events-none" id="holoSheenLayer" style="display: block;"></div>
+<div class="absolute -top-28 -right-28 w-60 h-60 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient"></div>
+<div class="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-secondary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient2"></div>
+<!-- Top Header Bar: Institution Branding + Slot & ISO Badge -->
+<div class="relative z-10 shrink-0 flex items-center justify-between pb-2 border-b border-slate-200/80" id="cardHeaderBar">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center shadow-sm shrink-0 transition-colors" id="instIconContainer" style="background-color: rgb(0, 105, 111); color: rgb(255, 255, 255);">
+<span class="material-symbols-outlined text-[18px]" id="instIcon">school</span>
+</div>
+<div class="leading-tight">
+<h2 class="text-[12px] font-black tracking-tight text-slate-900 uppercase font-sans line-clamp-1 max-w-[280px]" id="cardOrgDisplay" style="color: rgb(15, 23, 42);">UNIVERSITAS DIGITAL NUSANTARA</h2>
+<span class="text-[8.5px] font-bold tracking-wider text-primary uppercase block mt-0.5" id="cardSubtitleDisplay" style="color: rgb(0, 105, 111);">KARTU TANDA MAHASISWA RESMI • CR80 HORIZONTAL</span>
+</div>
+</div>
+<!-- Center slot placeholder & security badges -->
+<div class="flex items-center gap-2">
+<div class="hidden sm:flex w-10 h-1.5 rounded-full bg-slate-300 border border-black/10"></div>
+<span class="text-[8px] font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200" id="headerIsoBadge">ISO/IEC 7810 ID-1</span>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0" title="NFC Contactless Ready">
+<span class="material-symbols-outlined text-[14px]">contactless</span>
+</div>
+</div>
+</div>
+<!-- Main Middle Body: Balanced Two-Column Landscape Grid -->
+<div class="relative z-10 my-auto py-2.5 grid grid-cols-12 gap-5 items-center" id="cardBodySection">
+<!-- Left Column (5 cols): Photo 3x4 + Metallic Smart Chip + Status Badge -->
+<div class="col-span-5 flex items-center gap-3.5" id="cardPhotoArea">
+<div class="relative shrink-0" data-figma-layer="Layer 3: Avatar &amp; Status Badge">
+<div class="w-[86px] h-[112px] rounded-xl overflow-hidden p-[2px] bg-gradient-to-b from-primary via-primary/40 to-slate-300 shadow-sm transition-all duration-300" id="cardAvatarBorder" style="background: linear-gradient(rgb(0, 105, 111), rgba(0, 105, 111, 0.4), rgb(203, 213, 225));">
+<img alt="Foto Kartu" class="w-full h-full object-cover object-top rounded-[10px] bg-slate-100" id="cardAvatarImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNQhWKWzt5YzML1FUNWO5uZmELeWrwnIelqMqyf9TOp4wy9r3RAEe2dbVOvQBKujY-5RcmhAPAqLu89-2PiVCPTohsMxpTW79MeY7S5mgdD4T4VGl-ninvfSRsyEydL5agPSFZspK-8UMlBCDW1WmfjgnZ9lGJnWvQXkjlajX9l8llwPngLqSaKFFFtlFp6POJSReRm5IzNi5gdq6ZGargiD4JZgl7ppqmHtuIUztc60XHUHuoDCk"/>
+</div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[7.5px] font-extrabold tracking-wider shadow-sm flex items-center gap-1 border border-white" id="cardStatusBadge">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-200 animate-pulse"></span>
+<span class="" id="statusBadgeText">AKTIF / VALID</span>
+</div>
+</div>
+<!-- Smart Chip and Chip Spec Stack -->
+<div class="flex flex-col justify-center items-start gap-2 py-1" id="cardChipMetadataGroup">
+<div class="w-10 h-7 rounded-md metallic-chip relative p-0.5 border border-[#8b6508] shadow-xs" data-figma-layer="Layer 4: Metallic Smart Chip" id="cardSmartChip" style="display: flex;">
+<svg class="w-full h-full text-black/40" viewbox="0 0 48 36">
+<path d="M0 12 h14 M0 24 h14 M34 12 h14 M34 24 h14 M14 0 v36 M34 0 v36" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+<rect fill="none" height="16" rx="2" stroke="currentColor" stroke-width="1.2" width="16" x="16" y="10"></rect>
+</svg>
+</div>
+<div class="space-y-0.5 text-left">
+<span class="text-[7.5px] font-mono font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 block" id="chipIsoBadge">EMV 4.3</span>
+<span class="text-[7px] font-mono text-slate-400 block">CHIP CR80</span>
+</div>
+</div>
+</div>
+<!-- Right Column (7 cols): Full Holder Identity & Typography -->
+<div class="col-span-7 space-y-2 border-l border-slate-200/90 pl-4" data-figma-layer="Layer 5: Typography - Holder Identity" id="cardIdentitySection">
+<div>
+<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-500 block" id="labelCategorySmall">NAMA LENGKAP PEMEGANG</span>
+<h3 class="text-[18px] sm:text-[20px] font-black text-slate-900 leading-tight uppercase tracking-tight truncate" id="cardNameDisplay" style="color: rgb(15, 23, 42);">Bima Rizky Bakhtiar</h3>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 border border-slate-200 w-fit" id="cardRoleBadge" style="background-color: rgb(248, 250, 252); border-color: rgb(226, 232, 240);">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0" id="cardRoleDot" style="background-color: rgb(0, 105, 111);"></span>
+<p class="text-[10px] font-bold text-primary truncate max-w-[260px]" id="cardRoleDisplay" style="color: rgb(0, 105, 111);">Teknik Informatika &amp; Sistem Data</p>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-0.5 text-slate-600 font-mono text-[9px]" id="cardDetailsGrid">
+<div>
+<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelIdSmall">NOMOR INDUK</span>
+<p class="font-black text-slate-900 tracking-wide truncate" id="cardIdDisplay" style="color: rgb(15, 23, 42);">NIM: 202401099238</p>
+</div>
+<div>
+<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelValiditySmall">MASA BERLAKU</span>
+<p class="font-bold text-slate-800" id="cardValidityBadge">2024 - 2028</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Barcode, QR Code & ISO Microtext -->
+<div class="relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-4" id="cardFooterSection">
+<!-- Linear Barcode Section -->
+<div class="flex items-center gap-3" id="cardBarcodeGroup" style="display: flex;">
+<div class="flex items-center gap-[1.5px] h-5 px-1.5 bg-white border border-slate-300 rounded shadow-2xs">
+<span class="w-[2px] h-4 bg-slate-900"></span>
+<span class="w-[1px] h-4 bg-slate-900"></span>
+<span class="w-[3px] h-4 bg-slate-900"></span>
+<span class="w-[1px] h-4 bg-slate-900"></span>
+<span class="w-[2px] h-4 bg-slate-900"></span>
+<span class="w-[3px] h-4 bg-slate-900"></span>
+<span class="w-[1px] h-4 bg-slate-900"></span>
+<span class="w-[2px] h-4 bg-slate-900"></span>
+<span class="w-[1px] h-4 bg-slate-900"></span>
+<span class="w-[3px] h-4 bg-slate-900"></span>
+<span class="w-[1px] h-4 bg-slate-900"></span>
+<span class="w-[2px] h-4 bg-slate-900"></span>
+</div>
+<div class="text-[7.5px] font-mono font-bold text-slate-500 leading-tight">
+<span class="block" id="cardValidityDisplay">BERLAKU: 2028</span>
+<span class="text-slate-400">SECURE-CR80</span>
+</div>
+</div>
+<!-- Microtext & Hash Info -->
+<div class="hidden sm:flex flex-col text-[7px] font-mono text-slate-500 text-center" id="cardHashRow">
+<span id="cardStandardLabel">ISO/IEC 7810 ID-1 • AUTHENTICATED BADGE</span>
+<span class="text-primary font-bold inline-flex items-center justify-center gap-0.5" id="cardHashDisplayWrapper" style="color: rgb(0, 105, 111);">
+<span class="material-symbols-outlined text-[9px]">lock</span>
+<span id="cardHashDisplay">ID-HASH: 9942B</span>
+</span>
+</div>
+<!-- QR Code Block -->
+<div class="flex items-center gap-1.5 shrink-0" id="cardQrGroup">
+<div class="w-9 h-9 bg-white p-0.5 rounded-lg border border-slate-300 shadow-2xs flex items-center justify-center relative">
+<svg class="w-full h-full text-slate-900" fill="currentColor" viewbox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h4v2h-4v-2zm0 6h4v2h-4v-2zm-4 0h2v2h-2v-2zm0-4h2v2h-2v-2zM6 6h0v0H6zm12 0h0v0h0zM6 18h0v0H6z"></path>
+</svg>
+<div class="absolute inset-0 m-auto w-2.5 h-2.5 rounded-full bg-primary/20 flex items-center justify-center border border-white">
+<span class="material-symbols-outlined text-[7px] text-primary" id="qrIconDot" style="color: rgb(0, 105, 111);">verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== TAMPAK BELAKANG (BACK FACE) ==================== -->
+<div class="rounded-[22px] relative overflow-hidden shadow-[0_28px_65px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.18)] transition-all duration-300 bg-neutral-950 text-white select-none flex flex-col justify-between p-5 hidden w-[340px] sm:w-[540px] md:w-[560px] h-[348px]" id="cardFaceBack">
+<!-- Physical Punch Slot -->
+<div class="w-full flex justify-center -mt-1.5 relative z-10" id="backSlot">
+<div class="w-14 h-2.5 rounded-full bg-[#050608] border border-white/20 shadow-inner"></div>
+</div>
+<!-- Magnetic Stripe (CR80 Standard Hico) -->
+<div class="-mx-5 mt-2 space-y-1 relative z-10" id="backMagStripe">
+<div class="h-12 bg-black w-full shadow-inner flex items-center px-4 justify-between border-y border-neutral-800">
+<span class="text-[7.5px] font-mono text-neutral-400 tracking-wider">TRACK 1 / TRACK 2 HIGH COERCIVITY 4000 Oe</span>
+<span class="text-[7.5px] font-mono text-neutral-300 font-bold">ISO/IEC 7811</span>
+</div>
+</div>
+<!-- Signature & Security CVC Box -->
+<div class="space-y-1.5 pt-2 relative z-10" id="backSignatureBlock">
+<div class="flex items-center justify-between">
+<span class="text-[8px] font-bold text-neutral-300 uppercase tracking-wider">Tanda Tangan Resmi Pemilik</span>
+<span class="text-[7.5px] font-mono text-neutral-400">TIDAK SAH TANPA PARAF</span>
+</div>
+<div class="h-10 bg-neutral-100 rounded-lg flex items-center justify-between px-3 text-neutral-900 border border-neutral-300 shadow-inner">
+<span class="font-serif italic font-bold text-sm tracking-wide text-neutral-950" id="backSignature">Bima Rizky Bakhtiar</span>
+<div class="text-right">
+<span class="text-[7.5px] font-mono text-neutral-500 uppercase block">SECURE CVC</span>
+<span class="text-[10px] font-mono font-extrabold text-neutral-900 tracking-wider" id="backCvcDisplay">894</span>
+</div>
+</div>
+</div>
+<!-- Official Terms & Compliance Disclaimer -->
+<div class="space-y-1.5 text-neutral-300 text-[8px] leading-relaxed p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10" id="backTermsBlock">
+<span class="font-bold text-white uppercase text-[8.5px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary-container">info</span>
+<span class="">Ketentuan Pemegang Kartu:</span>
+</span>
+<p class="">1. Kartu ini merupakan properti sah institusi resmi penerbit dan wajib dibawa serta ditunjukkan saat berada di lingkungan formal.</p>
+<p class="">2. Dilarang keras memindahtangankan, menggandakan secara ilegal, atau memodifikasi chip tanpa otoritas resmi.</p>
+<p class="">3. Apabila kartu ini hilang atau ditemukan, mohon segera hubungi biro administrasi / pusat bantuan tertera.</p>
+</div>
+<!-- Institution Hotline & Emergency Contact -->
+<div class="pt-2 border-t border-neutral-800 flex items-center justify-between text-[8px] text-neutral-300 relative z-10" id="backContactBlock">
+<div>
+<span class="block font-bold text-neutral-100">Layanan Dukungan Kredensial:</span>
+<span class="text-neutral-300 font-mono" id="backContactDisplay">helpdesk@universitasdigitalnusantara.ac.id</span>
+</div>
+<div class="text-right flex items-center gap-1.5 bg-neutral-900 px-2 py-1 rounded-lg border border-neutral-800">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]">verified_user</span>
+<div>
+<span class="block font-mono text-emerald-300 font-bold text-[8.5px]">256-BIT ENCRYPTED</span>
+<span class="text-[7px] text-neutral-400 font-mono">HMAC SHA-256</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Studio Bottom Info Strip -->
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.04] border border-white/10 px-4 py-2.5 rounded-2xl text-xs text-white/80">
+<button class="flex items-center gap-2 hover:text-white transition-colors cursor-pointer text-left" onclick="openValidationModal()" type="button">
+<span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span>
+<span class="font-semibold text-white">Standar ISO/IEC 7810 ID-1 (CR80)</span>
+<span class="text-white/40">•</span>
+<span class="text-neutral-400" id="dimensionDisplay">Dimensi: 85.60 × 53.98 mm (Horizontal CR80)</span>
+</button>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-emerald-400 font-mono text-[11px] hover:underline cursor-pointer" onclick="openValidationModal()" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="">Siap Cetak 300 DPI</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full bg-surface-container-low border-t border-surface-container-high/60 py-3.5 px-4 sm:px-8 lg:px-12">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-on-surface-variant text-xs">
+<span class="">© 2025 IDCraft Sovereign Credential Studio. Hak Cipta Dilindungi Undang-Undang.</span>
+<div class="flex items-center gap-4 text-xs font-semibold">
+<button class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer" onclick="openValidationModal()" type="button">
+<span class="material-symbols-outlined text-primary text-[15px]">lock</span>
+<span class="">ISO Kriptografi Terpadu</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-emerald-700 transition-colors cursor-pointer" onclick="openValidationModal()" type="button">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">security</span>
+<span class="">Validasi Instan RFID / NFC</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- ========================================== -->
+<!-- MODAL 1: PUSTAKA TEMPLATE (INTERACTIVE DIALOG) -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/75 backdrop-blur-md transition-opacity duration-200 opacity-0 pointer-events-none" id="modalTemplates">
+<div class="bg-surface-container-lowest text-on-surface rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-surface-container-high transform transition-transform duration-200 overflow-hidden scale-95" id="modalTemplatesBox">
+<!-- Header -->
+<div class="p-5 sm:px-6 border-b border-surface-container-high flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-on-surface">Pustaka Template Kartu Identitas</h2>
+<p class="text-xs text-on-surface-variant">Pilih preset siap pakai untuk akademisi, instansi pemerintah, dan perusahaan swasta.</p>
+</div>
+</div>
+<button aria-label="Tutup Dialog" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Template Cards Grid -->
+<div class="p-5 sm:p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Preset 1: KTM Universitas Modern -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest hover:border-primary/50 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-indigo-50 text-indigo-700 border border-indigo-200">Akademik</span>
+<span class="text-[11px] font-mono text-neutral-400">CR80</span>
+</div>
+<h3 class="font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors">KTM Universitas Modern</h3>
+<p class="text-xs text-on-surface-variant">Desain biru indigo bersih untuk mahasiswa sains &amp; teknologi dengan chip contactless NFC.</p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-[#4f46e5] inline-block border border-white shadow-2xs"></span>
+<span class="w-4 h-4 rounded-full bg-[#00696f] inline-block border border-white shadow-2xs"></span>
+<span class="text-[10px] font-mono text-neutral-500">Gradien Indigo • Minimal Tech</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('ktm_modern')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Terapkan Template</span>
+</button>
+</div>
+<!-- Preset 2: Kartu Identitas ASN / BUMN -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest hover:border-primary/50 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-amber-50 text-amber-800 border border-amber-200">Pemerintahan</span>
+<span class="text-[11px] font-mono text-neutral-400">Klasik</span>
+</div>
+<h3 class="font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors">Kartu Identitas ASN / BUMN</h3>
+<p class="text-xs text-on-surface-variant">Format resmi lambang kebangsaan, aksen navy formal, dan microprint security anti-pemalsuan.</p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-[#00696f] inline-block border border-white shadow-2xs"></span>
+<span class="w-4 h-4 rounded-full bg-[#d4af37] inline-block border border-white shadow-2xs"></span>
+<span class="text-[10px] font-mono text-neutral-500">Navy &amp; Gold • Formal Klasik</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('asn_bumn')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Terapkan Template</span>
+</button>
+</div>
+<!-- Preset 3: Corporate Tech Pass -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest hover:border-primary/50 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-neutral-900 text-white border border-neutral-700">Dark Executive</span>
+<span class="text-[11px] font-mono text-neutral-400">Executive</span>
+</div>
+<h3 class="font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors">Corporate Tech Pass</h3>
+<p class="text-xs text-on-surface-variant">Latar belakang slate gelap mutakhir untuk perusahaan startup AI, arsitektur data, dan korporat.</p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-[#0f172a] inline-block border border-white shadow-2xs"></span>
+<span class="w-4 h-4 rounded-full bg-[#00f2fe] inline-block border border-white shadow-2xs"></span>
+<span class="text-[10px] font-mono text-neutral-500">Dark Slate • Executive</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('corp_tech')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Terapkan Template</span>
+</button>
+</div>
+<!-- Preset 4: Staff Medis & Rumah Sakit -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest hover:border-primary/50 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-emerald-50 text-emerald-800 border border-emerald-200">Kesehatan</span>
+<span class="text-[11px] font-mono text-neutral-400">Medis</span>
+</div>
+<h3 class="font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors">Staff Medis &amp; Rumah Sakit</h3>
+<p class="text-xs text-on-surface-variant">Tata letak higienis dengan warna emerald teal, nomor izin praktik SIP, serta barcode cepat farmasi.</p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-[#059669] inline-block border border-white shadow-2xs"></span>
+<span class="w-4 h-4 rounded-full bg-[#0d9488] inline-block border border-white shadow-2xs"></span>
+<span class="text-[10px] font-mono text-neutral-500">Emerald Teal • Clean Minimal</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('medis_rs')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Terapkan Template</span>
+</button>
+</div>
+<!-- Preset 5: Conference & Event Pass -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest hover:border-primary/50 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-rose-50 text-rose-800 border border-rose-200">Event VIP</span>
+<span class="text-[11px] font-mono text-neutral-400">Cyber</span>
+</div>
+<h3 class="font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors">Conference &amp; Event Pass</h3>
+<p class="text-xs text-on-surface-variant">Lencana konferensi teknologi internasional dengan warna crimson dinamis dan QR akses delegasi.</p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-[#be123c] inline-block border border-white shadow-2xs"></span>
+<span class="w-4 h-4 rounded-full bg-[#7f04ff] inline-block border border-white shadow-2xs"></span>
+<span class="text-[10px] font-mono text-neutral-500">Crimson Coral • Holographic</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('event_pass')" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Terapkan Template</span>
+</button>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-4 sm:px-6 bg-surface-container-low border-t border-surface-container-high flex items-center justify-between text-xs text-on-surface-variant">
+<span class="">Semua template dapat diedit lebih lanjut di editor studio.</span>
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container text-on-surface font-bold text-xs transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
+Tutup (Esc)
+</button>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- MODAL 2: VALIDASI SPESIFIKASI ISO/IEC 7810 -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/75 backdrop-blur-md transition-opacity duration-200 opacity-0 pointer-events-none" id="modalValidation">
+<div class="bg-surface-container-lowest text-on-surface rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-surface-container-high transform transition-transform duration-200 overflow-hidden scale-95" id="modalValidationBox">
+<!-- Header -->
+<div class="p-5 sm:px-6 border-b border-surface-container-high flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-on-surface">Validasi Spesifikasi ISO/IEC 7810</h2>
+<p class="text-xs text-on-surface-variant">Laporan diagnostik otomatis kesiapan cetak standar kartu ID-1 (CR80).</p>
+</div>
+</div>
+<button aria-label="Tutup Dialog" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Diagnostic Report Content -->
+<div class="p-5 sm:p-6 space-y-4 overflow-y-auto">
+<!-- Score Badge -->
+<div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[28px]">check_circle</span>
+</div>
+<div>
+<span class="text-xs font-bold text-emerald-800 uppercase tracking-wider block">Skor Kepatuhan Cetak</span>
+<span class="text-base sm:text-lg font-black text-emerald-950">100% Memenuhi Standar Industri (CR80)</span>
+</div>
+</div>
+<span class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-emerald-200 text-emerald-900 hidden sm:inline-block">SIAP CETAK</span>
+</div>
+<!-- Diagnostic Items Checklist -->
+<div class="space-y-2.5">
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider">Hasil Pengujian Kualitas 6 Titik:</h3>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Dimensi Fisik Standar ISO/IEC 7810 ID-1</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Ukuran presisi 85.60 mm × 53.98 mm, rasio 1.586, sudut lengkung (corner radius) 3.18 mm.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Resolusi Output Grafis (DPI)</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Kerapatan raster 300 DPI (Ultra-Sharp Print Ready) tanpa artifak kompresi untuk printer re-transfer.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Format Pasfoto &amp; Kualitas Deteksi Rasio</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Rasio aspek pasfoto 3:4 dengan kontras pencahayaan optimal dan penajaman tepi wajah.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Enkripsi QR Code SHA-256 Checksum</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Koreksi kesalahan Level M (15%) dengan integritas tanda tangan digital HMAC-SHA256 valid.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Barcode 1D Code-128 Standar ISO/IEC 15417</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Modulasi garis pembacaan optik optikal tinggi dengan quiet-zone kiri-kanan &gt; 10X lebar bar.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[20px] shrink-0 mt-0.5">check_box</span>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Safe Margin &amp; Bleed 3mm Industri</span>
+<span class="text-[10px] font-mono text-emerald-700 bg-emerald-100 font-bold px-1.5 py-0.2 rounded">LOLOS</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Seluruh teks dan elemen kritis aman di dalam zona keselamatan 3mm dari garis potong cetak.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-4 sm:px-6 bg-surface-container-low border-t border-surface-container-high flex items-center justify-between">
+<span class="text-xs font-mono text-on-surface-variant">Audit: CERT-ISO7810-CR80-PASS</span>
+<button class="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold text-xs transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
+Tutup
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Logic -->
+<script>
+  // Global State
+  const studioState = {
+    mode: 'academic', // 'academic' | 'corporate'
+    style: 'minimal', // 'minimal' | 'academic' | 'holo' | 'executive'
+    color: 'blue',
+    orientation: 'landscape',
+    face: 'front',
+    zoom: 1.0,
+    features: {
+      chip: true,
+      qr: true,
+      barcode: true,
+      badge: true
+    }
+  };
+
+  const colorSchemes = {
+    blue: {
+      name: 'Electric Blue',
+      primary: '#00696f',
+      secondary: '#6100c6',
+      badgeBg: '#00696f',
+      textAccent: '#00696f',
+      onAccent: '#ffffff',
+      isDark: false
+    },
+    indigo: {
+      name: 'Deep Indigo',
+      primary: '#4f46e5',
+      secondary: '#7c3aed',
+      badgeBg: '#4f46e5',
+      textAccent: '#4f46e5',
+      onAccent: '#ffffff',
+      isDark: false
+    },
+    emerald: {
+      name: 'Emerald Teal',
+      primary: '#059669',
+      secondary: '#0d9488',
+      badgeBg: '#059669',
+      textAccent: '#059669',
+      onAccent: '#ffffff',
+      isDark: false
+    },
+    crimson: {
+      name: 'Crimson Tech',
+      primary: '#be123c',
+      secondary: '#e11d48',
+      badgeBg: '#be123c',
+      textAccent: '#be123c',
+      onAccent: '#ffffff',
+      isDark: false
+    },
+    onyx: {
+      name: 'Onyx Black',
+      primary: '#0f172a',
+      secondary: '#1e293b',
+      badgeBg: '#0f172a',
+      textAccent: '#0f172a',
+      onAccent: '#ffffff',
+      isDark: true
+    }
+  };
+
+  // Safe DOM accessor helpers
+  function getEl(id) {
+    return document.getElementById(id);
+  }
+
+  // Set card face (front / back)
+  function setCardFace(side) {
+    studioState.face = side;
+    const btnFront = getEl('btnSideFront');
+    const btnBack = getEl('btnSideBack');
+    const front = getEl('cardFaceFront');
+    const back = getEl('cardFaceBack');
+
+    if (side === 'front') {
+      btnFront.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
+      btnBack.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1";
+      front.classList.remove('hidden');
+      back.classList.add('hidden');
+    } else {
+      btnBack.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
+      btnFront.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1";
+      front.classList.add('hidden');
+      back.classList.remove('hidden');
+    }
+    updateCardDimensions();
+  }
+
+  // Set orientation (landscape / portrait)
+  function setOrientation(orientation) {
+    studioState.orientation = orientation;
+    const btnP = getEl('btnOrientPortrait');
+    const btnL = getEl('btnOrientLandscape');
+
+    if (orientation === 'landscape') {
+      btnL.className = "py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
+      btnP.className = "py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
+    } else {
+      btnP.className = "py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
+      btnL.className = "py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
+    }
+
+    updateCardDimensions();
+    applyColorThemeStyles();
+  }
+
+  // Update card dimension styles
+  function updateCardDimensions() {
+    const isLandscape = studioState.orientation === 'landscape';
+    const front = getEl('cardFaceFront');
+    const back = getEl('cardFaceBack');
+    const clip = getEl('lanyardClip');
+    const dim = getEl('dimensionDisplay');
+    const statusLabel = getEl('studioBadgeStatus');
+
+    const cardBodySection = getEl('cardBodySection');
+    const cardPhotoArea = getEl('cardPhotoArea');
+    const cardChipMetadataGroup = getEl('cardChipMetadataGroup');
+    const cardIdentitySection = getEl('cardIdentitySection');
+    const headerIsoBadge = getEl('headerIsoBadge');
+    const chipIsoBadge = getEl('chipIsoBadge');
+    const cardDetailsGrid = getEl('cardDetailsGrid');
+    const cardFooterSection = getEl('cardFooterSection');
+
+    if (isLandscape) {
+      // Landscape CR80 layout
+      [front, back].forEach(el => {
+        el.className = el.className
+          .replace(/w-\[[0-9a-zA-Z]+\]|sm:w-\[[0-9a-zA-Z]+\]|md:w-\[[0-9a-zA-Z]+\]|h-\[[0-9a-zA-Z]+\]|min-h-\[[0-9a-zA-Z]+\]/g, '')
+          .trim();
+        el.classList.add('w-[340px]', 'sm:w-[540px]', 'md:w-[560px]', 'h-[348px]');
+      });
+
+      dim.textContent = "Dimensi: 85.60 × 53.98 mm (Horizontal CR80)";
+      if (clip) clip.classList.add('opacity-0', 'pointer-events-none', 'hidden');
+      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 HORIZONTAL (${studioState.mode === 'academic' ? 'MAHASISWA' : 'PROFESIONAL'})`;
+
+      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-2.5 grid grid-cols-12 gap-5 items-center";
+      if (cardPhotoArea) cardPhotoArea.className = "col-span-5 flex items-center gap-3.5";
+      if (cardChipMetadataGroup) cardChipMetadataGroup.className = "flex flex-col justify-center items-start gap-2 py-1";
+      if (cardIdentitySection) cardIdentitySection.className = "col-span-7 space-y-2 border-l border-slate-200/90 pl-4";
+      if (headerIsoBadge) headerIsoBadge.classList.remove('hidden');
+      if (chipIsoBadge) chipIsoBadge.classList.remove('hidden');
+      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-2 pt-0.5 text-slate-600 font-mono text-[9px]";
+      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-4";
+
+      // Back side adjustments
+      const backMag = getEl('backMagStripe');
+      const backTerms = getEl('backTermsBlock');
+      if (backMag) backMag.className = "-mx-5 mt-1 space-y-0.5 relative z-10";
+      if (backTerms) backTerms.className = "space-y-1 text-neutral-300 text-[7.5px] leading-tight p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10";
+    } else {
+      // Portrait CR80 layout
+      [front, back].forEach(el => {
+        el.className = el.className
+          .replace(/w-\[[0-9a-zA-Z]+\]|sm:w-\[[0-9a-zA-Z]+\]|md:w-\[[0-9a-zA-Z]+\]|h-\[[0-9a-zA-Z]+\]|min-h-\[[0-9a-zA-Z]+\]/g, '')
+          .trim();
+        el.classList.add('w-[340px]', 'sm:w-[350px]', 'h-[538px]');
+      });
+
+      dim.textContent = "Dimensi: 85.60 × 53.98 mm (Vertikal CR80)";
+      if (clip) clip.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
+      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 VERTIKAL (${studioState.mode === 'academic' ? 'MAHASISWA' : 'PROFESIONAL'})`;
+
+      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-2 flex flex-col gap-3";
+      if (cardPhotoArea) cardPhotoArea.className = "flex items-start gap-4";
+      if (cardChipMetadataGroup) cardChipMetadataGroup.className = "flex-1 flex flex-col justify-between h-[112px] py-1";
+      if (cardIdentitySection) cardIdentitySection.className = "space-y-1.5 pt-2 border-t border-slate-200/90";
+      if (headerIsoBadge) headerIsoBadge.classList.add('hidden');
+      if (chipIsoBadge) chipIsoBadge.classList.remove('hidden');
+      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-2 pt-1 text-slate-600 font-mono text-[9px]";
+      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-2";
+
+      // Back side adjustments
+      const backMag = getEl('backMagStripe');
+      const backTerms = getEl('backTermsBlock');
+      if (backMag) backMag.className = "-mx-5 mt-2 space-y-1 relative z-10";
+      if (backTerms) backTerms.className = "space-y-1.5 text-neutral-300 text-[8px] leading-relaxed p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10";
+    }
+  }
+
+  // Template Style Selector
+  function setDesignStyle(styleName) {
+    studioState.style = styleName;
+
+    // Update style buttons state
+    const styles = ['minimal', 'academic', 'holo', 'executive'];
+    styles.forEach(s => {
+      const btn = getEl('style' + s.charAt(0).toUpperCase() + s.slice(1));
+      if (btn) {
+        if (s === styleName) {
+          btn.className = "style-btn p-2 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20";
+        } else {
+          btn.className = "style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer";
+        }
+      }
+    });
+
+    const card = getEl('cardFaceFront');
+    const holoLayer = getEl('holoSheenLayer');
+    const cardGuilloche = getEl('cardGuilloche');
+
+    if (!card) return;
+
+    if (styleName === 'minimal') {
+      card.style.background = "#ffffff";
+      card.style.borderColor = "rgba(0, 105, 111, 0.3)";
+      if (holoLayer) holoLayer.style.display = "block";
+      if (cardGuilloche) cardGuilloche.style.opacity = "0.35";
+    } else if (styleName === 'academic') {
+      card.style.background = "linear-gradient(180deg, #f0f7ff 0%, #ffffff 55%, #ffffff 100%)";
+      card.style.borderColor = "rgba(0, 105, 111, 0.4)";
+      if (holoLayer) holoLayer.style.display = "none";
+      if (cardGuilloche) cardGuilloche.style.opacity = "0.5";
+    } else if (styleName === 'holo') {
+      card.style.background = "linear-gradient(135deg, rgba(236,254,255,0.85) 0%, #ffffff 50%, rgba(243,232,255,0.85) 100%)";
+      card.style.borderColor = "rgba(0, 242, 254, 0.5)";
+      if (holoLayer) holoLayer.style.display = "block";
+      if (cardGuilloche) cardGuilloche.style.opacity = "0.4";
+    } else if (styleName === 'executive') {
+      card.style.background = "#090d16";
+      card.style.borderColor = "rgba(255, 255, 255, 0.15)";
+      if (holoLayer) holoLayer.style.display = "none";
+      if (cardGuilloche) cardGuilloche.style.opacity = "0.15";
+    }
+
+    applyColorThemeStyles();
+  }
+
+  // Color Theme Selector
+  function setColorTheme(themeKey) {
+    studioState.color = themeKey;
+    applyColorThemeStyles();
+
+    // Update active ring on palette swatches
+    document.querySelectorAll('.palette-btn').forEach((btn) => {
+      if (btn.getAttribute('data-color') === themeKey) {
+        btn.classList.add('ring-2', 'ring-primary', 'ring-offset-2', 'ring-offset-surface-container-lowest');
+      } else {
+        btn.classList.remove('ring-2', 'ring-primary', 'ring-offset-2', 'ring-offset-surface-container-lowest');
+      }
+    });
+  }
+
+  // Dynamic Theme Synchronization
+  function applyColorThemeStyles() {
+    const theme = colorSchemes[studioState.color] || colorSchemes.blue;
+    const label = getEl('paletteNameLabel');
+    if (label) label.textContent = theme.name;
+
+    const instIconContainer = getEl('instIconContainer');
+    const cardRoleDisplay = getEl('cardRoleDisplay');
+    const cardRoleBadge = getEl('cardRoleBadge');
+    const cardRoleDot = getEl('cardRoleDot');
+    const cardSubtitleDisplay = getEl('cardSubtitleDisplay');
+    const ambient1 = getEl('ambientAura1');
+    const cardAvatarBorder = getEl('cardAvatarBorder');
+    const cardHashDisplayWrapper = getEl('cardHashDisplayWrapper');
+    const qrIconDot = getEl('qrIconDot');
+    const cardNameDisplay = getEl('cardNameDisplay');
+    const cardOrgDisplay = getEl('cardOrgDisplay');
+    const cardIdDisplay = getEl('cardIdDisplay');
+    const cardHeaderBar = getEl('cardHeaderBar');
+    const cardFooterSection = getEl('cardFooterSection');
+    const cardThemeGradient = getEl('cardThemeGradient');
+    const cardThemeGradient2 = getEl('cardThemeGradient2');
+
+    if (instIconContainer) {
+      instIconContainer.style.backgroundColor = theme.primary;
+      instIconContainer.style.color = theme.onAccent;
+    }
+
+    if (cardThemeGradient) {
+      cardThemeGradient.style.backgroundColor = theme.primary + '33';
+    }
+    if (cardThemeGradient2) {
+      cardThemeGradient2.style.backgroundColor = theme.secondary + '33';
+    }
+
+    const isDarkCard = studioState.style === 'executive';
+
+    if (isDarkCard) {
+      if (cardNameDisplay) cardNameDisplay.style.color = '#ffffff';
+      if (cardOrgDisplay) cardOrgDisplay.style.color = '#f1f5f9';
+      if (cardIdDisplay) cardIdDisplay.style.color = '#ffffff';
+      if (cardHeaderBar) cardHeaderBar.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+      if (cardFooterSection) cardFooterSection.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+
+      if (theme.isDark) {
+        if (cardSubtitleDisplay) cardSubtitleDisplay.style.color = '#94a3b8';
+        if (cardRoleDisplay) cardRoleDisplay.style.color = '#f8fafc';
+        if (cardRoleBadge) {
+          cardRoleBadge.style.backgroundColor = '#1e293b';
+          cardRoleBadge.style.borderColor = '#334155';
+        }
+        if (cardRoleDot) cardRoleDot.style.backgroundColor = '#38bdf8';
+        if (cardHashDisplayWrapper) cardHashDisplayWrapper.style.color = '#94a3b8';
+      } else {
+        if (cardSubtitleDisplay) cardSubtitleDisplay.style.color = theme.primary;
+        if (cardRoleDisplay) cardRoleDisplay.style.color = '#ffffff';
+        if (cardRoleBadge) {
+          cardRoleBadge.style.backgroundColor = theme.primary;
+          cardRoleBadge.style.borderColor = theme.primary;
+        }
+        if (cardRoleDot) cardRoleDot.style.backgroundColor = '#ffffff';
+        if (cardHashDisplayWrapper) cardHashDisplayWrapper.style.color = theme.primary;
+      }
+      if (cardAvatarBorder) {
+        cardAvatarBorder.style.background = `linear-gradient(to bottom, ${theme.primary}, #334155)`;
+      }
+    } else {
+      if (cardNameDisplay) cardNameDisplay.style.color = '#0f172a';
+      if (cardOrgDisplay) cardOrgDisplay.style.color = '#0f172a';
+      if (cardIdDisplay) cardIdDisplay.style.color = '#0f172a';
+      if (cardHeaderBar) cardHeaderBar.style.borderColor = 'rgba(226, 232, 240, 0.9)';
+      if (cardFooterSection) cardFooterSection.style.borderColor = 'rgba(226, 232, 240, 0.9)';
+
+      if (theme.isDark) {
+        if (cardSubtitleDisplay) cardSubtitleDisplay.style.color = '#0f172a';
+        if (cardRoleDisplay) cardRoleDisplay.style.color = '#0f172a';
+        if (cardRoleBadge) {
+          cardRoleBadge.style.backgroundColor = '#f1f5f9';
+          cardRoleBadge.style.borderColor = '#0f172a';
+        }
+        if (cardRoleDot) cardRoleDot.style.backgroundColor = '#0f172a';
+        if (cardHashDisplayWrapper) cardHashDisplayWrapper.style.color = '#0f172a';
+        if (cardAvatarBorder) {
+          cardAvatarBorder.style.background = 'linear-gradient(to bottom, #0f172a, #64748b, #cbd5e1)';
+        }
+      } else {
+        if (cardSubtitleDisplay) cardSubtitleDisplay.style.color = theme.primary;
+        if (cardRoleDisplay) cardRoleDisplay.style.color = theme.primary;
+        if (cardRoleBadge) {
+          cardRoleBadge.style.backgroundColor = '#f8fafc';
+          cardRoleBadge.style.borderColor = '#e2e8f0';
+        }
+        if (cardRoleDot) cardRoleDot.style.backgroundColor = theme.primary;
+        if (cardHashDisplayWrapper) cardHashDisplayWrapper.style.color = theme.primary;
+        if (cardAvatarBorder) {
+          cardAvatarBorder.style.background = `linear-gradient(to bottom, ${theme.primary}, ${theme.primary}66, #cbd5e1)`;
+        }
+      }
+    }
+
+    if (qrIconDot) qrIconDot.style.color = theme.isDark ? '#0f172a' : theme.primary;
+    if (ambient1) ambient1.style.backgroundColor = (theme.isDark ? '#3b82f6' : theme.primary) + '33';
+  }
+
+  // Switch card category mode (Academic vs Corporate)
+  function switchCardMode(mode) {
+    studioState.mode = mode;
+    const btnAcad = getEl('modeAcademic');
+    const btnCorp = getEl('modeCorporate');
+    const labelRole = getEl('labelRole');
+    const labelId = getEl('labelIdNumber');
+    const labelOrg = getEl('labelOrg');
+    const statusText = getEl('statusBadgeText');
+    const instIcon = getEl('instIcon');
+    const inputName = getEl('inputName');
+    const inputRole = getEl('inputRole');
+    const inputIdNumber = getEl('inputIdNumber');
+    const inputOrg = getEl('inputOrg');
+    const inputValidity = getEl('inputValidity');
+    const cardSubtitleDisplay = getEl('cardSubtitleDisplay');
+
+    if (mode === 'academic') {
+      btnAcad.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer";
+      btnCorp.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer";
+
+      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">school</span><span>Program Studi / Jurusan</span>';
+      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">tag</span><span>Nomor Induk Mahasiswa (NIM)</span>';
+      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">account_balance</span><span>Universitas / Institusi</span>';
+
+      inputName.value = "Bima Rizky Bakhtiar";
+      inputRole.value = "Teknik Informatika & Sistem Data";
+      inputIdNumber.value = "NIM: 202401099238";
+      inputOrg.value = "UNIVERSITAS DIGITAL NUSANTARA";
+      inputValidity.value = "BERLAKU: 2028";
+
+      cardSubtitleDisplay.textContent = "KARTU TANDA MAHASISWA RESMI • CR80 HORIZONTAL";
+      statusText.textContent = "AKTIF / VALID";
+      instIcon.textContent = "school";
+      setAvatarPreset('student');
+    } else {
+      btnCorp.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer";
+      btnAcad.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer";
+
+      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">badge</span><span>Jabatan / Divisi</span>';
+      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">pin</span><span>Nomor Pegawai (NIP / EMP ID)</span>';
+      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">corporate_fare</span><span>Nama Perusahaan / Startup</span>';
+
+      inputName.value = "Bima Rizky Bakhtiar";
+      inputRole.value = "Lead Software Architect";
+      inputIdNumber.value = "EMP: 8849204";
+      inputOrg.value = "NEXUS CYBER TECH";
+      inputValidity.value = "STATUS: PERMANEN";
+
+      cardSubtitleDisplay.textContent = "OFFICIAL EXECUTIVE BADGE • CR80";
+      statusText.textContent = "EMPLOYEE ACTIVE";
+      instIcon.textContent = "business_center";
+      setAvatarPreset('pro');
+    }
+
+    inputName.dispatchEvent(new Event('input'));
+    inputRole.dispatchEvent(new Event('input'));
+    inputIdNumber.dispatchEvent(new Event('input'));
+    inputOrg.dispatchEvent(new Event('input'));
+    inputValidity.dispatchEvent(new Event('input'));
+    applyColorThemeStyles();
+    updateCardDimensions();
+  }
+
+  // Zoom Transform
+  function setStudioZoom(zoomVal) {
+    studioState.zoom = zoomVal;
+    getEl('cardScaleContainer').style.transform = `scale(${zoomVal})`;
+    
+    document.querySelectorAll('.zoom-btn').forEach(b => {
+      b.className = "zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer";
+      if ((zoomVal === 0.85 && b.textContent.includes('85')) ||
+          (zoomVal === 1.0 && b.textContent.includes('100')) ||
+          (zoomVal === 1.15 && b.textContent.includes('115'))) {
+        b.className = "zoom-btn px-2.5 py-1 rounded text-xs font-bold text-white bg-white/20 cursor-pointer";
+      }
+    });
+  }
+
+  // Feature Toggles (Smart Chip, QR, Barcode, Badge)
+  function toggleFeature(feat) {
+    const chk = getEl('check' + feat.charAt(0).toUpperCase() + feat.slice(1));
+    if (!chk) return;
+    studioState.features[feat] = chk.checked;
+    
+    if (feat === 'chip') {
+      const chip = getEl('cardSmartChip');
+      if (chip) chip.style.display = studioState.features.chip ? 'flex' : 'none';
+    } else if (feat === 'qr') {
+      const qr = getEl('cardQrGroup');
+      if (qr) qr.style.display = studioState.features.qr ? 'flex' : 'none';
+    } else if (feat === 'barcode') {
+      const barcode = getEl('cardBarcodeGroup');
+      if (barcode) barcode.style.display = studioState.features.barcode ? 'flex' : 'none';
+    } else if (feat === 'badge') {
+      const badge = getEl('cardStatusBadge');
+      if (badge) badge.style.display = studioState.features.badge ? 'flex' : 'none';
+    }
+  }
+
+  // Photo handlers
+  function handlePhotoUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        getEl('formAvatarPreview').src = e.target.result;
+        getEl('cardAvatarImg').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function setAvatarPreset(type) {
+    const preview = getEl('formAvatarPreview');
+    const cardImg = getEl('cardAvatarImg');
+    const url = type === 'student' 
+      ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'
+      : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';
+    if (preview) preview.src = url;
+    if (cardImg) cardImg.src = url;
+  }
+
+  // Trigger Download / Export Print
+  function triggerDownload() {
+    const btn = getEl('btnDownloadText');
+    const original = btn.textContent;
+    btn.textContent = "Mengemas Format CR80 300 DPI...";
+    setTimeout(() => {
+      btn.textContent = "Membuka Dialog Cetak...";
+      window.print();
+      setTimeout(() => {
+        btn.textContent = "Kartu Berhasil Disiapkan!";
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 2000);
+      }, 1000);
+    }, 600);
+  }
+
+  function saveTemplateNotice() {
+    const btn = getEl('saveBtnText');
+    btn.textContent = "Tersimpan di Cloud!";
+    setTimeout(() => {
+      btn.textContent = "Simpan Template";
+    }, 2000);
+  }
+
+  function resetStudioDefaults() {
+    switchCardMode('academic');
+    setDesignStyle('minimal');
+    setColorTheme('blue');
+    setOrientation('landscape');
+    setCardFace('front');
+    setStudioZoom(1.0);
+    setAvatarPreset('student');
+    ['chip', 'qr', 'barcode', 'badge'].forEach(f => {
+      const chk = getEl('check' + f.charAt(0).toUpperCase() + f.slice(1));
+      if (chk) {
+        chk.checked = true;
+        toggleFeature(f);
+      }
+    });
+  }
+
+  // Modal Dialog Handlers
+  function openTemplatesModal() {
+    const modal = getEl('modalTemplates');
+    const box = getEl('modalTemplatesBox');
+    if (!modal || !box) return;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-95');
+    box.classList.add('scale-100');
+  }
+
+  function closeTemplatesModal() {
+    const modal = getEl('modalTemplates');
+    const box = getEl('modalTemplatesBox');
+    if (!modal || !box) return;
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-100');
+    box.classList.add('scale-95');
+  }
+
+  function openValidationModal() {
+    const modal = getEl('modalValidation');
+    const box = getEl('modalValidationBox');
+    if (!modal || !box) return;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-95');
+    box.classList.add('scale-100');
+  }
+
+  function closeValidationModal() {
+    const modal = getEl('modalValidation');
+    const box = getEl('modalValidationBox');
+    if (!modal || !box) return;
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    box.classList.remove('scale-100');
+    box.classList.add('scale-95');
+  }
+
+  // Apply Presets from Modal
+  function applyPreset(presetKey) {
+    const inputName = getEl('inputName');
+    const inputRole = getEl('inputRole');
+    const inputIdNumber = getEl('inputIdNumber');
+    const inputOrg = getEl('inputOrg');
+    const inputValidity = getEl('inputValidity');
+
+    if (presetKey === 'ktm_modern') {
+      switchCardMode('academic');
+      inputName.value = "Nadia Zahra Pramudita";
+      inputRole.value = "Ilmu Komputer & AI";
+      inputIdNumber.value = "NIM: 202401089921";
+      inputOrg.value = "INSTITUT TEKNOLOGI NUSANTARA";
+      inputValidity.value = "BERLAKU: 2028";
+      setColorTheme('indigo');
+      setDesignStyle('minimal');
+    } else if (presetKey === 'asn_bumn') {
+      switchCardMode('corporate');
+      inputName.value = "Dr. Hendra Gunawan, S.T., M.T.";
+      inputRole.value = "Pranata Komputer Ahli Madya";
+      inputIdNumber.value = "NIP: 198504122010011008";
+      inputOrg.value = "KEMENTERIAN RISET & TEKNOLOGI";
+      inputValidity.value = "STATUS: TETAP ASN";
+      setColorTheme('blue');
+      setDesignStyle('academic');
+    } else if (presetKey === 'corp_tech') {
+      switchCardMode('corporate');
+      inputName.value = "Alex Reinhart, M.Sc.";
+      inputRole.value = "VP of Infrastructure & Security";
+      inputIdNumber.value = "EMP-992014";
+      inputOrg.value = "SYNTHEX GLOBAL LABS";
+      inputValidity.value = "TIER: LEVEL 4 ACCESS";
+      setColorTheme('onyx');
+      setDesignStyle('executive');
+    } else if (presetKey === 'medis_rs') {
+      switchCardMode('corporate');
+      inputName.value = "dr. Amanda Clara, Sp.PD";
+      inputRole.value = "Spesialis Penyakit Dalam";
+      inputIdNumber.value = "SIP: 446/2019/IDI-JKT";
+      inputOrg.value = "RS MEDIKA SEJAHTERA PUSAT";
+      inputValidity.value = "BERLAKU: 2029";
+      setColorTheme('emerald');
+      setDesignStyle('minimal');
+    } else if (presetKey === 'event_pass') {
+      switchCardMode('corporate');
+      inputName.value = "Kevin Ardiansyah";
+      inputRole.value = "Keynote Speaker • CyberTech 2025";
+      inputIdNumber.value = "PASS: VIP-DELEGATE-09";
+      inputOrg.value = "SUMMIT ASIA PACIFIC 2025";
+      inputValidity.value = "VALID: 14-18 MEI 2025";
+      setColorTheme('crimson');
+      setDesignStyle('holo');
+    }
+
+    // Trigger input update listeners
+    inputName.dispatchEvent(new Event('input'));
+    inputRole.dispatchEvent(new Event('input'));
+    inputIdNumber.dispatchEvent(new Event('input'));
+    inputOrg.dispatchEvent(new Event('input'));
+    inputValidity.dispatchEvent(new Event('input'));
+
+    closeTemplatesModal();
+
+    // Visual notification
+    const badge = getEl('studioBadgeStatus');
+    if (badge) {
+      const oldText = badge.textContent;
+      badge.textContent = "PRESET TEMPLATE BERHASIL DITERAPKAN!";
+      setTimeout(() => {
+        badge.textContent = oldText;
+      }, 2000);
+    }
+  }
+
+  // Setup DOM and listeners once DOM is fully ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Input elements
+    const inputName = getEl('inputName');
+    const inputRole = getEl('inputRole');
+    const inputIdNumber = getEl('inputIdNumber');
+    const inputOrg = getEl('inputOrg');
+    const inputValidity = getEl('inputValidity');
+
+    // Display elements
+    const cardNameDisplay = getEl('cardNameDisplay');
+    const cardRoleDisplay = getEl('cardRoleDisplay');
+    const cardIdDisplay = getEl('cardIdDisplay');
+    const cardOrgDisplay = getEl('cardOrgDisplay');
+    const cardValidityDisplay = getEl('cardValidityDisplay');
+    const cardValidityBadge = getEl('cardValidityBadge');
+    const backSignature = getEl('backSignature');
+    const backContactDisplay = getEl('backContactDisplay');
+
+    // Attach immediate input listeners
+    if (inputName) {
+      ['input', 'keyup'].forEach(ev => {
+        inputName.addEventListener(ev, (e) => {
+          const val = e.target.value.trim() || 'NAMA LENGKAP PEMEGANG';
+          if (cardNameDisplay) cardNameDisplay.textContent = val;
+          if (backSignature) backSignature.textContent = val;
+        });
+      });
+    }
+
+    if (inputRole) {
+      ['input', 'keyup'].forEach(ev => {
+        inputRole.addEventListener(ev, (e) => {
+          if (cardRoleDisplay) cardRoleDisplay.textContent = e.target.value.trim() || 'JABATAN / PROGRAM STUDI';
+        });
+      });
+    }
+
+    if (inputIdNumber) {
+      ['input', 'keyup'].forEach(ev => {
+        inputIdNumber.addEventListener(ev, (e) => {
+          const val = e.target.value.trim() || 'NIM / NIP / EMP';
+          if (cardIdDisplay) cardIdDisplay.textContent = val;
+        });
+      });
+    }
+
+    if (inputOrg) {
+      ['input', 'keyup'].forEach(ev => {
+        inputOrg.addEventListener(ev, (e) => {
+          const val = e.target.value.trim() || 'INSTITUSI / KORPORASI';
+          if (cardOrgDisplay) cardOrgDisplay.textContent = val;
+          const domain = val.toLowerCase().replace(/[^a-z0-9]/g, '') || 'institusi';
+          if (backContactDisplay) backContactDisplay.textContent = `helpdesk@${domain}.ac.id`;
+        });
+      });
+    }
+
+    if (inputValidity) {
+      ['input', 'keyup'].forEach(ev => {
+        inputValidity.addEventListener(ev, (e) => {
+          const raw = e.target.value.trim() || 'BERLAKU: 2028';
+          if (cardValidityDisplay) cardValidityDisplay.textContent = raw;
+          const cleanYear = raw.replace(/[^0-9]/g, '');
+          if (cardValidityBadge) {
+            cardValidityBadge.textContent = cleanYear ? (cleanYear.length === 4 ? `2024 - ${cleanYear}` : cleanYear) : '2028';
+          }
+        });
+      });
+    }
+
+    // Modal background close
+    [getEl('modalTemplates'), getEl('modalValidation')].forEach(modal => {
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeTemplatesModal();
+            closeValidationModal();
+          }
+        });
+      }
+    });
+
+    // Keyboard ESC listener
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeTemplatesModal();
+        closeValidationModal();
+      }
+    });
+
+    // Initialize layout & style defaults
+    setDesignStyle('minimal');
+    setColorTheme('blue');
+    setOrientation('landscape');
+  });
+</script>
+</body></html>
