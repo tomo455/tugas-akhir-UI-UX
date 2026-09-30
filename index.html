@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-
-<html lang="id" style=""><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="web_standard" name="shell-type"/>
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
 <title>IDCraft Studio - Generator ID Card Mahasiswa &amp; Profesional</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <style>
     @layer base {
       html, body { margin:0; padding:0; }
@@ -14,15 +12,18 @@
       main>:first-child { margin-top:0!important; }
       main>:last-child { margin-bottom:0!important; }
     }
-    ::-webkit-scrollbar { display:none; }
+    ::-webkit-scrollbar { width:6px; height:6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
     .guilloche-pattern {
-      background-image: radial-gradient(rgba(0,105,111,0.08) 1px, transparent 0), radial-gradient(rgba(97,0,198,0.06) 1px, transparent 0);
-      background-size: 14px 14px;
-      background-position: 0 0, 7px 7px;
+      background-image: radial-gradient(rgba(0,105,111,0.09) 1.2px, transparent 0), radial-gradient(rgba(97,0,198,0.07) 1.2px, transparent 0);
+      background-size: 15px 15px;
+      background-position: 0 0, 7.5px 7.5px;
     }
     .metallic-chip {
-      background: linear-gradient(135deg, #f7d070 0%, #e0a928 35%, #b58014 70%, #ffd479 100%);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.8), inset 0 -1px 2px rgba(0,0,0,0.35), 0 3px 6px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #fce085 0%, #e5b02a 35%, #b88213 70%, #ffdb85 100%);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.85), inset 0 -1.5px 2px rgba(0,0,0,0.4), 0 3px 8px rgba(0,0,0,0.2);
     }
     .studio-grid {
       background-size: 32px 32px;
@@ -31,7 +32,7 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
     .holo-foil {
-      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.4) 45%, rgba(0,242,254,0.35) 50%, rgba(127,4,255,0.35) 55%, transparent 80%);
+      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.45) 45%, rgba(0,242,254,0.4) 50%, rgba(127,4,255,0.4) 55%, transparent 80%);
       pointer-events: none;
     }
   </style>
@@ -97,24 +98,35 @@
       }
     }
   </script>
-</head>
+<script id="live-studio-interactions">function initLivePanAndSync(){const stage=document.getElementById('cardViewportStage');if(stage){let isDown=false;let startX,startY,scrollLeft,scrollTop;stage.addEventListener('mousedown',(e)=>{if(e.target.isContentEditable)return;isDown=true;stage.classList.remove('panning-grab');stage.classList.add('panning-grabbing');startX=e.pageX-stage.offsetLeft;startY=e.pageY-stage.offsetTop;scrollLeft=stage.scrollLeft;scrollTop=stage.scrollTop;});window.addEventListener('mouseup',()=>{if(!isDown)return;isDown=false;stage.classList.remove('panning-grabbing');stage.classList.add('panning-grab');});stage.addEventListener('mousemove',(e)=>{if(!isDown)return;e.preventDefault();const x=e.pageX-stage.offsetLeft;const y=e.pageY-stage.offsetTop;const walkX=(x-startX)*1.5;const walkY=(y-startY)*1.5;stage.scrollLeft=scrollLeft-walkX;stage.scrollTop=scrollTop-walkY;});}const nameEl=document.getElementById('cardNameDisplay');const roleEl=document.getElementById('cardRoleDisplay');const idEl=document.getElementById('cardIdDisplay');const orgEl=document.getElementById('cardOrgDisplay');const valEl=document.getElementById('cardValidityDisplay');const sigEl=document.getElementById('backSignature');const inputName=document.getElementById('inputName');const inputRole=document.getElementById('inputRole');const inputId=document.getElementById('inputIdNumber');const inputOrg=document.getElementById('inputOrg');const inputVal=document.getElementById('inputValidity');if(nameEl&&inputName){nameEl.addEventListener('input',()=>{inputName.value=nameEl.innerText;if(sigEl)sigEl.innerText=nameEl.innerText;});}if(sigEl&&inputName){sigEl.addEventListener('input',()=>{inputName.value=sigEl.innerText;if(nameEl)nameEl.innerText=sigEl.innerText;});}if(roleEl&&inputRole){roleEl.addEventListener('input',()=>{inputRole.value=roleEl.innerText;});}if(idEl&&inputId){idEl.addEventListener('input',()=>{inputId.value=idEl.innerText;});}if(orgEl&&inputOrg){orgEl.addEventListener('input',()=>{inputOrg.value=orgEl.innerText;const domain=orgEl.innerText.toLowerCase().replace(/[^a-z0-9]/g,'')||'institusi';const contact=document.getElementById('backContactDisplay');if(contact)contact.innerText=`helpdesk@${domain}.ac.id`;});}if(valEl&&inputVal){valEl.addEventListener('input',()=>{inputVal.value=valEl.innerText;const cleanYear=valEl.innerText.replace(/[^0-9]/g,'');const badge=document.getElementById('cardValidityBadge');if(badge&&cleanYear){badge.innerText=cleanYear.length===4?`2024 - ${cleanYear}`:cleanYear;}});}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initLivePanAndSync);}else{initLivePanAndSync();}</script></head>
 <body class="bg-background text-on-surface font-sans min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
 <!-- Global Top Navbar -->
-<header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
 <div class="h-16 w-full px-4 sm:px-8 lg:px-12 flex items-center justify-between">
 <div class="flex items-center gap-4">
 <div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm shrink-0">
 <span class="material-symbols-outlined text-[22px]">badge</span>
 </div>
 <div class="flex flex-col">
 <div class="flex items-center gap-2">
 <span class="font-extrabold text-[18px] tracking-tight text-on-surface">IDCraft</span>
-<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed uppercase tracking-wider">v3.0 Pro Studio</span>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed uppercase tracking-wider">v3.2 HD Pro</span>
 </div>
-<span class="text-[11px] font-medium text-on-surface-variant">Generator ID Card Mahasiswa &amp; Profesional</span>
+<span class="text-[11px] font-medium text-on-surface-variant hidden sm:inline">Generator ID Card Mahasiswa &amp; Profesional</span>
 </div>
 </div>
+</div>
+<!-- Mobile View Toggle Tab Bar -->
+<div class="flex lg:hidden items-center p-1 rounded-xl bg-surface-container-low border border-surface-container-high">
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-surface-container-lowest text-primary shadow-xs" id="mobileTabEditor" onclick="switchMobileTab('editor')" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="">Editor</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface" id="mobileTabPreview" onclick="switchMobileTab('preview')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">Pratinjau</span>
+</button>
 </div>
 <nav class="hidden md:flex items-center gap-1.5 p-1 rounded-xl bg-surface-container-low border border-surface-container-high">
 <button class="px-3.5 py-1.5 transition-colors bg-surface-container-lowest text-primary font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5" type="button">
@@ -148,12 +160,12 @@
 <main class="w-full pt-16 flex-1 bg-background flex flex-col">
 <div class="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-4rem)]">
 <!-- LEFT PANEL: Dynamic Customization Studio -->
-<div class="lg:col-span-6 xl:col-span-5 bg-surface-container-lowest border-r border-surface-container-high/60 p-4 sm:p-6 lg:p-7 flex flex-col justify-between overflow-y-auto space-y-6">
+<div class="lg:col-span-6 xl:col-span-5 bg-surface-container-lowest border-r border-surface-container-high/60 p-4 sm:p-6 lg:p-7 flex flex-col justify-between overflow-y-auto space-y-6 block" id="editorContainerPanel">
 <div class="space-y-5">
 <!-- Header & Mode Pill Switcher -->
 <div class="space-y-3">
-<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold tracking-wide uppercase">
-<span class="material-symbols-outlined text-[14px]">tune</span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[15px]">tune</span>
 <span class="">Konfigurator ID Card Multifungsi</span>
 </div>
 <div class="flex items-start justify-between">
@@ -161,20 +173,20 @@
 <h1 class="text-xl sm:text-2xl font-black text-on-surface tracking-tight">Kustomisasi ID Card Digital</h1>
 <p class="text-xs sm:text-sm text-on-surface-variant mt-0.5">Pilih tipe kartu akademik atau korporasi, sesuaikan identitas, dan dapatkan pratinjau live.</p>
 </div>
-<button class="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-primary bg-primary/10 hover:bg-primary/20 px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer" onclick="openTemplatesModal()" type="button">
+<button class="inline-flex items-center gap-1 text-xs font-bold text-primary bg-primary/10 hover:bg-primary/20 px-3 py-2 rounded-lg transition-colors cursor-pointer min-h-[38px]" onclick="openTemplatesModal()" type="button">
 <span class="material-symbols-outlined text-[16px]">bookmark</span>
 <span class="">Preset</span>
 </button>
 </div>
 <!-- Dual-Mode Switcher: Mahasiswa (KTM) vs Profesional (Kantor) -->
-<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-surface-container-high gap-1">
-<button class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer" id="modeAcademic" onclick="switchCardMode('academic')" type="button">
-<span class="material-symbols-outlined text-[18px]">school</span>
+<div class="grid grid-cols-2 p-1.5 bg-surface-container-low rounded-xl border border-surface-container-high gap-1.5">
+<button class="flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer min-h-[44px]" id="modeAcademic" onclick="switchCardMode('academic')" type="button">
+<span class="material-symbols-outlined text-[20px]">school</span>
 <span class="">Kartu Mahasiswa (KTM)</span>
 </button>
-<button class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer" id="modeCorporate" onclick="switchCardMode('corporate')" type="button">
-<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
-<span class="">ID Card Profesional / Kantor</span>
+<button class="flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer min-h-[44px]" id="modeCorporate" onclick="switchCardMode('corporate')" type="button">
+<span class="material-symbols-outlined text-[20px]">corporate_fare</span>
+<span class="">ID Card Profesional</span>
 </button>
 </div>
 </div>
@@ -184,64 +196,64 @@
 <div class="space-y-1.5">
 <div class="flex items-center justify-between">
 <label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputName">
-<span class="material-symbols-outlined text-primary text-[16px]">person</span>
+<span class="material-symbols-outlined text-primary text-[17px]">person</span>
 <span class="">Nama Lengkap Pemegang</span>
 </label>
-<span class="text-[10px] font-bold text-primary px-1.5 py-0.5 rounded bg-primary/10">Wajib Diisi</span>
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10">Wajib Diisi</span>
 </div>
-<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-semibold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-outline" id="inputName" placeholder="Contoh: Bima Rizky Bakhtiar" type="text" value="Bima Rizky Bakhtiar"/>
+<input class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm sm:text-base font-bold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-outline" id="inputName" placeholder="Contoh: Bima Rizky Bakhtiar" type="text" value="Bima Rizky Bakhtiar">
 </div>
 <!-- 2. Dual Fields: Peran/Jurusan & Nomor Induk -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
 <div class="space-y-1.5">
-<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputRole" id="labelRole"><span class="material-symbols-outlined text-primary text-[16px]">school</span><span class="">Program Studi / Jurusan</span></label>
-<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-medium focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputRole" placeholder="Contoh: Teknik Informatika" type="text" value="Teknik Informatika &amp; Sistem Data"/>
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputRole" id="labelRole"><span class="material-symbols-outlined text-primary text-[17px]">school</span><span class="">Program Studi / Jurusan</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-semibold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputRole" placeholder="Contoh: Teknik Informatika" type="text" value="Teknik Informatika &amp; Sistem Data">
 </div>
 <div class="space-y-1.5">
-<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputIdNumber" id="labelIdNumber"><span class="material-symbols-outlined text-primary text-[16px]">tag</span><span class="">Nomor Induk Mahasiswa (NIM)</span></label>
-<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-mono font-medium tracking-wide focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputIdNumber" placeholder="NIM / NIP / EMP-ID" type="text" value="NIM: 202401099238"/>
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputIdNumber" id="labelIdNumber"><span class="material-symbols-outlined text-primary text-[17px]">tag</span><span class="">Nomor Induk Mahasiswa (NIM)</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-mono font-bold tracking-wide focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputIdNumber" placeholder="NIM / NIP / EMP-ID" type="text" value="NIM: 202401099238">
 </div>
 </div>
 <!-- 3. Institusi / Perusahaan & Masa Berlaku -->
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
 <div class="sm:col-span-2 space-y-1.5">
-<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputOrg" id="labelOrg"><span class="material-symbols-outlined text-primary text-[16px]">account_balance</span><span class="">Universitas / Institusi</span></label>
-<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-semibold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputOrg" placeholder="Nama Universitas atau Korporasi" type="text" value="UNIVERSITAS DIGITAL NUSANTARA"/>
+<label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputOrg" id="labelOrg"><span class="material-symbols-outlined text-primary text-[17px]">account_balance</span><span class="">Universitas / Institusi</span></label>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-sm font-bold focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputOrg" placeholder="Nama Universitas atau Korporasi" type="text" value="UNIVERSITAS DIGITAL NUSANTARA">
 </div>
 <div class="space-y-1.5">
 <label class="text-xs font-bold text-on-surface flex items-center gap-1.5" for="inputValidity">
-<span class="material-symbols-outlined text-primary text-[16px]">event_available</span>
+<span class="material-symbols-outlined text-primary text-[17px]">event_available</span>
 <span class="">Masa Berlaku</span>
 </label>
-<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-xs font-mono font-bold tracking-wider focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputValidity" placeholder="Contoh: 2028" type="text" value="BERLAKU: 2028"/>
+<input class="w-full px-3.5 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-low text-on-surface text-xs font-mono font-bold tracking-wider focus:border-primary focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 outline-none transition-all" id="inputValidity" placeholder="Contoh: 2028" type="text" value="BERLAKU: 2028">
 </div>
 </div>
 <!-- 4. Foto Profil & Avatar Uploader -->
 <div class="space-y-1.5">
 <label class="text-xs font-bold text-on-surface flex items-center gap-1.5">
-<span class="material-symbols-outlined text-primary text-[16px]">photo_camera</span>
+<span class="material-symbols-outlined text-primary text-[17px]">photo_camera</span>
 <span class="">Pasfoto Identitas Resmi</span>
 </label>
-<div class="p-3 rounded-2xl border border-surface-container-high bg-surface-container-low flex items-center gap-4">
-<div class="relative w-14 h-18 sm:w-16 sm:h-20 rounded-xl overflow-hidden shadow-sm shrink-0 border-2 border-primary/40 bg-surface-container-high">
-<img alt="Foto Profil Resmi" class="w-full h-full object-cover object-top" id="formAvatarPreview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGEOMlBMnoTqoUa1Cv45gUsustcNBKFePrEtHBQidyLIZLd6UmGUOP5tYYY2sP-AGPlgdqpng-maEoUhsYUY7igZNgXBA90ah2BkoU04i2yG-4medF0ObO4cVP3N_fnm-bHENWBmJJv9939tGye0XOq9r9dTu1XQx93J0nAZburwGQV7QIW65Pm3NBWjwzBuC3bDX1dUrdi8P6uTHjbvRvCnaiuaNDQoyP9Tzm2j8QSgB4x3nenf97"/>
-<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+<div class="p-3.5 rounded-2xl border border-surface-container-high bg-surface-container-low flex flex-col sm:flex-row items-center gap-4">
+<div class="relative w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden shadow-sm shrink-0 border-2 border-primary/40 bg-surface-container-high">
+<img alt="Foto Profil Resmi" class="w-full h-full object-cover object-top" id="formAvatarPreview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNQhWKWzt5YzML1FUNWO5uZmELeWrwnIelqMqyf9TOp4wy9r3RAEe2dbVOvQBKujY-5RcmhAPAqLu89-2PiVCPTohsMxpTW79MeY7S5mgdD4T4VGl-ninvfSRsyEydL5agPSFZspK-8UMlBCDW1WmfjgnZ9lGJnWvQXkjlajX9l8llwPngLqSaKFFFtlFp6POJSReRm5IzNi5gdq6ZGargiD4JZgl7ppqmHtuIUztc60XHUHuoDCk">
+<span class="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-white"></span>
 </div>
-<div class="flex-1 space-y-2">
-<div class="flex flex-wrap items-center gap-2">
-<label class="cursor-pointer px-3 py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-container text-on-surface text-xs font-bold inline-flex items-center gap-1.5 shadow-2xs transition-colors" for="avatarFileInput">
-<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<div class="flex-1 space-y-2.5 text-center sm:text-left w-full">
+<div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+<label class="cursor-pointer min-h-[40px] px-3.5 py-2 rounded-xl bg-surface-container-highest hover:bg-surface-container text-on-surface text-xs font-bold inline-flex items-center gap-1.5 shadow-2xs transition-colors" for="avatarFileInput">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
 <span class="">Ganti Foto</span>
 </label>
-<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-medium transition-colors cursor-pointer" onclick="setAvatarPreset('student')" type="button">
+<button class="min-h-[40px] px-3 py-2 rounded-xl bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-semibold transition-colors cursor-pointer" onclick="setAvatarPreset('student')" type="button">
                     Foto Mahasiswa
                   </button>
-<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-medium transition-colors cursor-pointer" onclick="setAvatarPreset('pro')" type="button">
+<button class="min-h-[40px] px-3 py-2 rounded-xl bg-surface-container text-on-surface-variant hover:text-on-surface text-xs font-semibold transition-colors cursor-pointer" onclick="setAvatarPreset('pro')" type="button">
                     Foto Eksekutif
                   </button>
-<input accept="image/*" class="hidden" id="avatarFileInput" onchange="handlePhotoUpload(event)" type="file"/>
+<input accept="image/*" class="hidden" id="avatarFileInput" onchange="handlePhotoUpload(event)" type="file">
 </div>
-<p class="text-[11px] text-on-surface-variant">Standar pasfoto 3×4 atau 4×6 cm. Otomatis diselaraskan ke resolusi kartu cetak.</p>
+<p class="text-[11px] text-on-surface-variant">Standar pasfoto 3×4 atau 4×6 cm. Otomatis diselaraskan ke resolusi kartu cetak 300 DPI.</p>
 </div>
 </div>
 </div>
@@ -249,25 +261,25 @@
 <div class="space-y-1.5">
 <label class="text-xs font-bold text-on-surface flex items-center justify-between">
 <span class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-primary text-[16px]">palette</span>
+<span class="material-symbols-outlined text-primary text-[17px]">palette</span>
 <span class="">Template Gaya Desain</span>
 </span>
 <button class="text-[11px] font-bold text-primary hover:underline cursor-pointer" id="btnOpenTemplatesLink" onclick="openTemplatesModal()" type="button">Buka Pustaka Lengkap →</button>
 </label>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-<button class="style-btn p-2 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20" id="styleMinimal" onclick="setDesignStyle('minimal')" type="button">
+<button class="style-btn min-h-[52px] p-2.5 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20" id="styleMinimal" onclick="setDesignStyle('minimal')" type="button">
 <span class="block text-xs font-extrabold">Minimal Tech</span>
 <span class="block text-[10px] text-on-surface-variant">Clean &amp; Presisi</span>
 </button>
-<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleAcademic" onclick="setDesignStyle('academic')" type="button">
+<button class="style-btn min-h-[52px] p-2.5 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleAcademic" onclick="setDesignStyle('academic')" type="button">
 <span class="block text-xs font-extrabold">Formal Klasik</span>
 <span class="block text-[10px] text-on-surface-variant">Universitas Resmi</span>
 </button>
-<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleHolo" onclick="setDesignStyle('holo')" type="button">
+<button class="style-btn min-h-[52px] p-2.5 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleHolo" onclick="setDesignStyle('holo')" type="button">
 <span class="block text-xs font-extrabold">Holographic</span>
 <span class="block text-[10px] text-on-surface-variant">Cyber Modern</span>
 </button>
-<button class="style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleExecutive" onclick="setDesignStyle('executive')" type="button">
+<button class="style-btn min-h-[52px] p-2.5 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer" id="styleExecutive" onclick="setDesignStyle('executive')" type="button">
 <span class="block text-xs font-extrabold">Executive</span>
 <span class="block text-[10px] text-on-surface-variant">Premium Dark</span>
 </button>
@@ -279,26 +291,26 @@
 <div class="space-y-1.5">
 <label class="text-xs font-bold text-on-surface flex items-center justify-between">
 <span class="">Aksen Warna Identitas</span>
-<span class="text-[10px] font-mono font-bold text-primary" id="paletteNameLabel">Electric Blue</span>
+<span class="text-[11px] font-mono font-bold text-primary" id="paletteNameLabel">Electric Blue</span>
 </label>
-<div class="flex items-center gap-2">
-<button class="palette-btn w-8 h-8 rounded-full bg-[#00696f] ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest transition-all cursor-pointer" data-color="blue" onclick="setColorTheme('blue')" title="Electric Blue" type="button"></button>
-<button class="palette-btn w-8 h-8 rounded-full bg-[#4f46e5] hover:opacity-90 transition-all cursor-pointer" data-color="indigo" onclick="setColorTheme('indigo')" title="Deep Indigo" type="button"></button>
-<button class="palette-btn w-8 h-8 rounded-full bg-[#059669] hover:opacity-90 transition-all cursor-pointer" data-color="emerald" onclick="setColorTheme('emerald')" title="Emerald Teal" type="button"></button>
-<button class="palette-btn w-8 h-8 rounded-full bg-[#be123c] hover:opacity-90 transition-all cursor-pointer" data-color="crimson" onclick="setColorTheme('crimson')" title="Crimson Tech" type="button"></button>
-<button class="palette-btn w-8 h-8 rounded-full bg-[#0f172a] hover:opacity-90 transition-all border border-neutral-700 cursor-pointer" data-color="onyx" onclick="setColorTheme('onyx')" title="Onyx Black" type="button"></button>
+<div class="flex items-center gap-2.5 pt-1">
+<button class="palette-btn w-9 h-9 rounded-full bg-[#00696f] ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest transition-all cursor-pointer min-w-[36px]" data-color="blue" onclick="setColorTheme('blue')" title="Electric Blue" type="button"></button>
+<button class="palette-btn w-9 h-9 rounded-full bg-[#4f46e5] hover:opacity-90 transition-all cursor-pointer min-w-[36px]" data-color="indigo" onclick="setColorTheme('indigo')" title="Deep Indigo" type="button"></button>
+<button class="palette-btn w-9 h-9 rounded-full bg-[#059669] hover:opacity-90 transition-all cursor-pointer min-w-[36px]" data-color="emerald" onclick="setColorTheme('emerald')" title="Emerald Teal" type="button"></button>
+<button class="palette-btn w-9 h-9 rounded-full bg-[#be123c] hover:opacity-90 transition-all cursor-pointer min-w-[36px]" data-color="crimson" onclick="setColorTheme('crimson')" title="Crimson Tech" type="button"></button>
+<button class="palette-btn w-9 h-9 rounded-full bg-[#0f172a] hover:opacity-90 transition-all border border-neutral-700 cursor-pointer min-w-[36px]" data-color="onyx" onclick="setColorTheme('onyx')" title="Onyx Black" type="button"></button>
 </div>
 </div>
 <!-- Orientasi Kartu -->
 <div class="space-y-1.5">
 <label class="text-xs font-bold text-on-surface">Orientasi Cetak</label>
-<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-surface-container-high gap-1">
-<button class="py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer" id="btnOrientPortrait" onclick="setOrientation('portrait')" type="button">
-<span class="material-symbols-outlined text-[16px]">crop_portrait</span>
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-surface-container-high gap-1.5">
+<button class="min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer" id="btnOrientPortrait" onclick="setOrientation('portrait')" type="button">
+<span class="material-symbols-outlined text-[18px]">crop_portrait</span>
 <span class="">Vertikal</span>
 </button>
-<button class="py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer" id="btnOrientLandscape" onclick="setOrientation('landscape')" type="button">
-<span class="material-symbols-outlined text-[16px]">crop_landscape</span>
+<button class="min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer" id="btnOrientLandscape" onclick="setOrientation('landscape')" type="button">
+<span class="material-symbols-outlined text-[18px]">crop_landscape</span>
 <span class="">Horizontal</span>
 </button>
 </div>
@@ -307,24 +319,24 @@
 <!-- 7. Fitur Keamanan Interaktif & Aksesoris Kartu -->
 <div class="space-y-2">
 <label class="text-xs font-bold text-on-surface flex items-center gap-1.5">
-<span class="material-symbols-outlined text-primary text-[16px]">security</span>
+<span class="material-symbols-outlined text-primary text-[17px]">security</span>
 <span class="">Fitur Keamanan &amp; Modul Digital</span>
 </label>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
-<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkChip" onchange="toggleFeature('chip')" type="checkbox"/>
+<label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container min-h-[44px]">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkChip" onchange="toggleFeature('chip')" type="checkbox">
 <span class="text-xs font-semibold text-on-surface">Smart Chip</span>
 </label>
-<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
-<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkQR" onchange="toggleFeature('qr')" type="checkbox"/>
+<label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container min-h-[44px]">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkQR" onchange="toggleFeature('qr')" type="checkbox">
 <span class="text-xs font-semibold text-on-surface">QR Enkripsi</span>
 </label>
-<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
-<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBarcode" onchange="toggleFeature('barcode')" type="checkbox"/>
+<label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container min-h-[44px]">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBarcode" onchange="toggleFeature('barcode')" type="checkbox">
 <span class="text-xs font-semibold text-on-surface">ISO Barcode</span>
 </label>
-<label class="flex items-center gap-2 p-2 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container">
-<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBadge" onchange="toggleFeature('badge')" type="checkbox"/>
+<label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high cursor-pointer hover:bg-surface-container min-h-[44px]">
+<input checked="" class="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" id="checkBadge" onchange="toggleFeature('badge')" type="checkbox">
 <span class="text-xs font-semibold text-on-surface">Status Badge</span>
 </label>
 </div>
@@ -332,16 +344,16 @@
 </div>
 <!-- Tombol Aksi Download / Simpan / Reset -->
 <div class="pt-3 space-y-2.5">
-<button class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-primary via-primary to-secondary text-white font-bold text-sm shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] flex items-center justify-center gap-2 transition-all cursor-pointer" onclick="triggerDownload()" type="button">
-<span class="material-symbols-outlined text-[20px]">download</span>
-<span class="" id="btnDownloadText">Unduh ID Card (HD PNG / PDF Siap Cetak)</span>
+<button class="w-full min-h-[48px] py-3 px-4 rounded-xl bg-gradient-to-r from-primary via-primary to-secondary text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] flex items-center justify-center gap-2 transition-all cursor-pointer" onclick="(function(){ const btn = document.getElementById('btnDownloadText'); const original = btn ? btn.textContent : ''; if(btn) btn.textContent = 'Membuka Jendela Cetak Terisolasi...'; const card = document.getElementById('cardFaceFront').classList.contains('hidden') ? document.getElementById('cardFaceBack') : document.getElementById('cardFaceFront'); const win = window.open('', '_blank', 'width=800,height=600'); if(win) { win.document.write('&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Cetak ID Card CR80&lt;/title&gt;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700;800&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;\/script&gt;&lt;style&gt;@page{size:auto;margin:10mm;}body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#fff;padding:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;' + card.outerHTML + '&lt;script&gt;window.onload=function(){window.focus();setTimeout(function(){window.print();},400);};&lt;\/script&gt;&lt;/body&gt;&lt;/html&gt;'); win.document.close(); } else { window.print(); } if(btn){ setTimeout(function(){ btn.textContent = 'Kartu Berhasil Disiapkan!'; setTimeout(function(){ btn.textContent = original; }, 2000); }, 800); } })()" type="button">
+<span class="material-symbols-outlined text-[22px]">download</span>
+<span id="btnDownloadText" class="">Unduh ID Card (HD PNG / PDF Siap Cetak)</span>
 </button>
 <div class="grid grid-cols-2 gap-2">
-<button class="py-2.5 px-3 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="saveTemplateNotice()" type="button">
+<button class="min-h-[42px] py-2.5 px-3 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="saveTemplateNotice()" type="button">
 <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
-<span class="" id="saveBtnText">Simpan Template</span>
+<span id="saveBtnText" class="">Simpan Template</span>
 </button>
-<button class="py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-error hover:bg-error-container/40 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="resetStudioDefaults()" type="button">
+<button class="min-h-[42px] py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-error hover:bg-error-container/40 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer" onclick="resetStudioDefaults()" type="button">
 <span class="material-symbols-outlined text-[18px]">refresh</span>
 <span class="">Reset Data Default</span>
 </button>
@@ -358,193 +370,195 @@
 </div>
 </div>
 <!-- RIGHT PANEL: Ultra-Realistic Live Dark Studio Environment -->
-<div class="lg:col-span-6 xl:col-span-7 bg-[#0b0e14] relative overflow-hidden flex flex-col justify-between p-4 sm:p-6 lg:p-8 studio-grid">
+<div class="lg:col-span-6 xl:col-span-7 bg-[#0b0e14] relative overflow-hidden flex flex-col justify-between p-3 sm:p-6 lg:p-8 studio-grid hidden lg:flex" id="previewContainerPanel">
 <!-- Ambient Studio Lighting Effects -->
 <div class="absolute -top-36 -right-36 w-[450px] h-[450px] rounded-full bg-[#00696f]/20 blur-[120px] pointer-events-none" id="ambientAura1" style="background-color: rgba(0, 105, 111, 0.2);"></div>
 <div class="absolute -bottom-36 -left-36 w-[450px] h-[450px] rounded-full bg-[#6100c6]/20 blur-[120px] pointer-events-none" id="ambientAura2"></div>
 <div class="absolute inset-0 bg-radial from-transparent via-[#0b0e14]/50 to-[#0b0e14] pointer-events-none"></div>
 <!-- Studio Floating Toolbar -->
-<div class="relative z-20 flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.04] border border-white/10 p-2 sm:px-3 rounded-2xl shadow-xl">
+<div class="relative z-20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.05] border border-white/10 p-2 sm:px-3 rounded-2xl shadow-xl">
 <div class="flex items-center gap-2">
 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-<span class="text-xs font-bold text-white uppercase tracking-wider" id="studioBadgeStatus">LIVE STUDIO • CR80 HORIZONTAL (LANDSCAPE)</span>
-</div>
-<!-- Controls: Flip Side & Zoom Scale -->
-<div class="flex items-center gap-2">
-<div class="flex items-center p-1 rounded-xl bg-white/[0.06] border border-white/10">
-<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1" id="btnSideFront" onclick="setCardFace('front')" type="button">
-<span class="material-symbols-outlined text-[14px]">id_card</span>
+<span class="text-xs font-bold text-white uppercase tracking-wider" id="studioBadgeStatus">LIVE STUDIO • CR80 HORIZONTAL • 100% ZOOM</span>
+<span class="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary/20 text-primary-fixed border border-primary/40 tracking-normal">✨ Live Edit Aktif (Klik teks kartu)</span></div>
+<!-- Controls: Flip Side & Complete Zoom Scale (75%, 100%, 125%, 150%, 200%) -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center p-1 rounded-xl bg-white/[0.08] border border-white/10">
+<button class="min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1" id="btnSideFront" onclick="setCardFace('front')" type="button">
+<span class="material-symbols-outlined text-[15px]">id_card</span>
 <span class="">Tampak Depan</span>
 </button>
-<button class="px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1" id="btnSideBack" onclick="setCardFace('back')" type="button">
-<span class="material-symbols-outlined text-[14px]">flip</span>
+<button class="min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold text-white/75 hover:text-white transition-all cursor-pointer flex items-center gap-1" id="btnSideBack" onclick="setCardFace('back')" type="button">
+<span class="material-symbols-outlined text-[15px]">flip</span>
 <span class="">Tampak Belakang</span>
 </button>
 </div>
-<div class="hidden sm:flex items-center p-1 rounded-xl bg-white/[0.06] border border-white/10">
-<button class="zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer" onclick="setStudioZoom(0.85)" type="button">85%</button>
-<button class="zoom-btn px-2.5 py-1 rounded text-xs font-bold text-white bg-white/20 cursor-pointer" onclick="setStudioZoom(1.0)" type="button">100%</button>
-<button class="zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer" onclick="setStudioZoom(1.15)" type="button">115%</button>
+<!-- Interactive Zoom Buttons: 75%, 100%, 125%, 150%, 200% -->
+<div class="flex items-center p-1 rounded-xl bg-white/[0.08] border border-white/10 overflow-x-auto">
+<button class="zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-zoom="0.75" onclick="setStudioZoom(0.75)" type="button">75%</button>
+<button class="zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-bold text-white bg-primary shadow-xs transition-all cursor-pointer" data-zoom="1.0" onclick="setStudioZoom(1.0)" type="button">100%</button>
+<button class="zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-zoom="1.25" onclick="setStudioZoom(1.25)" type="button">125%</button>
+<button class="zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-zoom="1.5" onclick="setStudioZoom(1.5)" type="button">150%</button>
+<button class="zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all cursor-pointer" data-zoom="2.0" onclick="setStudioZoom(2.0)" type="button">200%</button>
 </div>
 </div>
 </div>
-<!-- Card Stage Centerpiece -->
-<div class="relative z-10 flex-1 my-4 flex flex-col items-center justify-center">
-<!-- Realistic Lanyard Strap & Clip Mount -->
-<div class="w-24 h-10 bg-neutral-800/90 backdrop-blur-md rounded-t-xl -mb-3 z-30 flex flex-col items-center shadow-2xl border border-white/10 transition-all duration-300 opacity-0 pointer-events-none hidden" data-figma-layer="Lanyard Clip &amp; Slot" id="lanyardClip"></div>
+<!-- Card Stage Centerpiece with Smooth Overflow Scroll for Large Scale (up to 200%) -->
+<div class="relative z-10 flex-1 my-2 sm:my-3 flex flex-col items-center justify-start sm:justify-center overflow-auto p-6 sm:p-12 w-full h-full panning-grab overflow-x-auto" id="cardViewportStage" style="touch-action: pan-x pan-y; overflow-x: auto; padding: 16px 12px;">
 <!-- Scalable Card Wrapper -->
-<div class="transition-transform duration-300 ease-out origin-center" id="cardScaleContainer" style="transform: scale(1);">
+<div class="transition-transform duration-300 ease-out origin-center shrink-0 m-auto flex flex-col items-center justify-center max-w-full w-full" id="printableCardArea" style="transform: scale(1);">
 <!-- ==================== TAMPAK DEPAN (FRONT FACE) ==================== -->
-<div class="rounded-[22px] relative overflow-hidden shadow-[0_28px_65px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.18)] transition-all duration-300 bg-white text-slate-900 select-none flex flex-col justify-between p-5 border-2 border-primary/30 w-[340px] sm:w-[540px] md:w-[560px] h-[348px]" data-figma-layer="Frame: Card Container (Landscape CR80)" id="cardFaceFront" style="background: rgb(255, 255, 255);">
+<div class="rounded-[24px] relative overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.22)] transition-all duration-300 bg-white text-slate-900 select-none flex flex-col justify-between p-4 sm:p-6 border-2 border-primary/30 max-w-full mx-auto w-[340px] sm:w-[570px] md:w-[600px] h-[375px]" data-figma-layer="Frame: Card Container (Landscape CR80)" id="cardFaceFront" style="background: rgb(255, 255, 255); border-color: rgba(0, 105, 111, 0.35);">
 <!-- Background Watermark / Guilloche -->
-<div class="guilloche-pattern absolute inset-0 opacity-40 pointer-events-none" data-figma-layer="Layer 1: Background &amp; Hologram Mesh" id="cardGuilloche"></div>
+<div class="guilloche-pattern absolute inset-0 opacity-40 pointer-events-none" data-figma-layer="Layer 1: Background &amp; Hologram Mesh" id="cardGuilloche" style="opacity: 0.35;"></div>
 <div class="holo-foil absolute inset-0 opacity-30 pointer-events-none" id="holoSheenLayer" style="display: block;"></div>
-<div class="absolute -top-28 -right-28 w-60 h-60 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient"></div>
-<div class="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-secondary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient2"></div>
+<div class="absolute -top-28 -right-28 w-64 h-64 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient" style="background-color: rgba(0, 105, 111, 0.2);"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-secondary/20 blur-3xl pointer-events-none transition-all duration-300" id="cardThemeGradient2" style="background-color: rgba(97, 0, 198, 0.2);"></div>
 <!-- Top Header Bar: Institution Branding + Slot & ISO Badge -->
-<div class="relative z-10 shrink-0 flex items-center justify-between pb-2 border-b border-slate-200/80" id="cardHeaderBar">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center shadow-sm shrink-0 transition-colors" id="instIconContainer" style="background-color: rgb(0, 105, 111); color: rgb(255, 255, 255);">
-<span class="material-symbols-outlined text-[18px]" id="instIcon">school</span>
+<div class="relative z-10 shrink-0 flex items-center justify-between pb-3 border-b border-slate-200/90" id="cardHeaderBar" style="border-color: rgba(226, 232, 240, 0.9);">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-md shrink-0 transition-colors" id="instIconContainer" style="background-color: rgb(0, 105, 111); color: rgb(255, 255, 255);">
+<span class="material-symbols-outlined text-[24px]" id="instIcon">school</span>
 </div>
-<div class="leading-tight">
-<h2 class="text-[12px] font-black tracking-tight text-slate-900 uppercase font-sans line-clamp-1 max-w-[280px]" id="cardOrgDisplay" style="color: rgb(15, 23, 42);">UNIVERSITAS DIGITAL NUSANTARA</h2>
-<span class="text-[8.5px] font-bold tracking-wider text-primary uppercase block mt-0.5" id="cardSubtitleDisplay" style="color: rgb(0, 105, 111);">KARTU TANDA MAHASISWA RESMI • CR80 HORIZONTAL</span>
+<div class="leading-snug">
+<h2 class="text-[13.5px] sm:text-[14.5px] font-black tracking-tight text-slate-900 uppercase font-sans line-clamp-1 max-w-[310px] card-editable" id="cardOrgDisplay" style="color: rgb(15, 23, 42);" title="✏️ Klik untuk Live Edit Institusi">UNIVERSITAS DIGITAL NUSANTARA</h2>
+<span class="text-[9.5px] font-bold tracking-wider text-primary uppercase block mt-0.5" id="cardSubtitleDisplay" style="color: rgb(0, 105, 111);">KARTU TANDA MAHASISWA RESMI • CR80 HORIZONTAL</span>
 </div>
 </div>
 <!-- Center slot placeholder & security badges -->
 <div class="flex items-center gap-2">
-<div class="hidden sm:flex w-10 h-1.5 rounded-full bg-slate-300 border border-black/10"></div>
-<span class="text-[8px] font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200" id="headerIsoBadge">ISO/IEC 7810 ID-1</span>
-<div class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0" title="NFC Contactless Ready">
-<span class="material-symbols-outlined text-[14px]">contactless</span>
+<div class="hidden sm:flex w-11 h-2 rounded-full bg-slate-300/80 border border-black/10"></div>
+<span class="text-[9px] font-mono font-extrabold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200" id="headerIsoBadge">ISO/IEC 7810 ID-1</span>
+<div class="flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0" title="NFC Contactless Ready">
+<span class="material-symbols-outlined text-[16px]">contactless</span>
 </div>
 </div>
 </div>
 <!-- Main Middle Body: Balanced Two-Column Landscape Grid -->
-<div class="relative z-10 my-auto py-2.5 grid grid-cols-12 gap-5 items-center" id="cardBodySection">
+<div class="relative z-10 my-auto py-3 grid grid-cols-12 gap-5 items-center" id="cardBodySection">
 <!-- Left Column (5 cols): Photo 3x4 + Metallic Smart Chip + Status Badge -->
 <div class="col-span-5 flex items-center gap-3.5" id="cardPhotoArea">
 <div class="relative shrink-0" data-figma-layer="Layer 3: Avatar &amp; Status Badge">
-<div class="w-[86px] h-[112px] rounded-xl overflow-hidden p-[2px] bg-gradient-to-b from-primary via-primary/40 to-slate-300 shadow-sm transition-all duration-300" id="cardAvatarBorder" style="background: linear-gradient(rgb(0, 105, 111), rgba(0, 105, 111, 0.4), rgb(203, 213, 225));">
-<img alt="Foto Kartu" class="w-full h-full object-cover object-top rounded-[10px] bg-slate-100" id="cardAvatarImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNQhWKWzt5YzML1FUNWO5uZmELeWrwnIelqMqyf9TOp4wy9r3RAEe2dbVOvQBKujY-5RcmhAPAqLu89-2PiVCPTohsMxpTW79MeY7S5mgdD4T4VGl-ninvfSRsyEydL5agPSFZspK-8UMlBCDW1WmfjgnZ9lGJnWvQXkjlajX9l8llwPngLqSaKFFFtlFp6POJSReRm5IzNi5gdq6ZGargiD4JZgl7ppqmHtuIUztc60XHUHuoDCk"/>
+<div class="w-[96px] h-[126px] rounded-xl overflow-hidden p-[2.5px] bg-gradient-to-b from-primary via-primary/40 to-slate-300 shadow-md transition-all duration-300" id="cardAvatarBorder" style="background: linear-gradient(rgb(0, 105, 111), rgba(0, 105, 111, 0.4), rgb(203, 213, 225));">
+<img alt="Foto Kartu" class="w-full h-full object-cover object-top rounded-[10px] bg-slate-100" id="cardAvatarImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNQhWKWzt5YzML1FUNWO5uZmELeWrwnIelqMqyf9TOp4wy9r3RAEe2dbVOvQBKujY-5RcmhAPAqLu89-2PiVCPTohsMxpTW79MeY7S5mgdD4T4VGl-ninvfSRsyEydL5agPSFZspK-8UMlBCDW1WmfjgnZ9lGJnWvQXkjlajX9l8llwPngLqSaKFFFtlFp6POJSReRm5IzNi5gdq6ZGargiD4JZgl7ppqmHtuIUztc60XHUHuoDCk">
 </div>
-<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[7.5px] font-extrabold tracking-wider shadow-sm flex items-center gap-1 border border-white" id="cardStatusBadge">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-200 animate-pulse"></span>
-<span class="" id="statusBadgeText">AKTIF / VALID</span>
+<div class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[8.5px] font-extrabold tracking-wider shadow-md flex items-center gap-1 border-2 border-white" id="cardStatusBadge">
+<span class="w-2 h-2 rounded-full bg-emerald-200 animate-pulse"></span>
+<span id="statusBadgeText" class="">AKTIF / VALID</span>
 </div>
 </div>
-<!-- Smart Chip and Chip Spec Stack -->
+<!-- Smart Chip and Chip Spec Stack (Enhanced & Enlarged Circuits) -->
 <div class="flex flex-col justify-center items-start gap-2 py-1" id="cardChipMetadataGroup">
-<div class="w-10 h-7 rounded-md metallic-chip relative p-0.5 border border-[#8b6508] shadow-xs" data-figma-layer="Layer 4: Metallic Smart Chip" id="cardSmartChip" style="display: flex;">
-<svg class="w-full h-full text-black/40" viewbox="0 0 48 36">
-<path d="M0 12 h14 M0 24 h14 M34 12 h14 M34 24 h14 M14 0 v36 M34 0 v36" fill="none" stroke="currentColor" stroke-width="1.2"></path>
-<rect fill="none" height="16" rx="2" stroke="currentColor" stroke-width="1.2" width="16" x="16" y="10"></rect>
+<div class="w-12 h-9 rounded-lg metallic-chip relative p-0.5 border border-[#8b6508] shadow-sm flex items-center justify-center" data-figma-layer="Layer 4: Metallic Smart Chip" id="cardSmartChip" style="display: flex;">
+<svg class="w-full h-full text-black/50" viewBox="0 0 48 36">
+<path d="M0 12 h14 M0 24 h14 M34 12 h14 M34 24 h14 M14 0 v36 M34 0 v36" fill="none" stroke="currentColor" stroke-width="1.3"></path>
+<rect fill="none" height="18" rx="2.5" stroke="currentColor" stroke-width="1.3" width="18" x="15" y="9"></rect>
+<circle cx="24" cy="18" fill="currentColor" r="1.5"></circle>
 </svg>
 </div>
 <div class="space-y-0.5 text-left">
-<span class="text-[7.5px] font-mono font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 block" id="chipIsoBadge">EMV 4.3</span>
-<span class="text-[7px] font-mono text-slate-400 block">CHIP CR80</span>
+<span class="text-[8.5px] font-mono font-black text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 block" id="chipIsoBadge">EMV 4.3</span>
+<span class="text-[7.5px] font-mono font-semibold text-slate-400 block tracking-wide">SECURE CHIP</span>
 </div>
 </div>
 </div>
-<!-- Right Column (7 cols): Full Holder Identity & Typography -->
-<div class="col-span-7 space-y-2 border-l border-slate-200/90 pl-4" data-figma-layer="Layer 5: Typography - Holder Identity" id="cardIdentitySection">
+<!-- Right Column (7 cols): Full Holder Identity & Typography (Enlarged for Legibility) -->
+<div class="col-span-7 space-y-2.5 border-l border-slate-200/90 pl-4 sm:pl-5" data-figma-layer="Layer 5: Typography - Holder Identity" id="cardIdentitySection">
 <div>
-<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-500 block" id="labelCategorySmall">NAMA LENGKAP PEMEGANG</span>
-<h3 class="text-[18px] sm:text-[20px] font-black text-slate-900 leading-tight uppercase tracking-tight truncate" id="cardNameDisplay" style="color: rgb(15, 23, 42);">Bima Rizky Bakhtiar</h3>
+<span class="text-[8.5px] font-extrabold uppercase tracking-wider text-slate-500 block mb-0.5" id="labelCategorySmall">NAMA LENGKAP PEMEGANG</span>
+<h3 class="text-[20px] sm:text-[23px] font-black text-slate-900 leading-tight uppercase tracking-tight truncate drop-shadow-2xs card-editable" id="cardNameDisplay" style="color: rgb(15, 23, 42);" title="✏️ Klik untuk Live Edit Nama">Bima Rizky Bakhtiar</h3>
 </div>
-<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 border border-slate-200 w-fit" id="cardRoleBadge" style="background-color: rgb(248, 250, 252); border-color: rgb(226, 232, 240);">
-<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0" id="cardRoleDot" style="background-color: rgb(0, 105, 111);"></span>
-<p class="text-[10px] font-bold text-primary truncate max-w-[260px]" id="cardRoleDisplay" style="color: rgb(0, 105, 111);">Teknik Informatika &amp; Sistem Data</p>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 w-fit shadow-2xs" id="cardRoleBadge" style="background-color: rgb(248, 250, 252); border-color: rgb(226, 232, 240);">
+<span class="w-2 h-2 rounded-full bg-primary shrink-0" id="cardRoleDot" style="background-color: rgb(0, 105, 111);"></span>
+<p class="text-[11.5px] sm:text-[12.5px] font-bold text-primary truncate max-w-[280px] card-editable" id="cardRoleDisplay" style="color: rgb(0, 105, 111);" title="✏️ Klik untuk Live Edit Jabatan / Jurusan">Teknik Informatika &amp; Sistem Data</p>
 </div>
-<div class="grid grid-cols-2 gap-2 pt-0.5 text-slate-600 font-mono text-[9px]" id="cardDetailsGrid">
+<div class="grid grid-cols-2 gap-3 pt-1 text-slate-600 font-mono" id="cardDetailsGrid">
 <div>
-<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelIdSmall">NOMOR INDUK</span>
-<p class="font-black text-slate-900 tracking-wide truncate" id="cardIdDisplay" style="color: rgb(15, 23, 42);">NIM: 202401099238</p>
+<span class="text-[8.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelIdSmall">NOMOR INDUK</span>
+<p class="font-extrabold text-[12px] sm:text-[13px] text-slate-900 tracking-wide truncate card-editable" id="cardIdDisplay" style="color: rgb(15, 23, 42);" title="✏️ Klik untuk Live Edit Nomor Induk (NIM / NIP)">NIM: 202401099238</p>
 </div>
 <div>
-<span class="text-[7.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelValiditySmall">MASA BERLAKU</span>
-<p class="font-bold text-slate-800" id="cardValidityBadge">2024 - 2028</p>
+<span class="text-[8.5px] font-bold uppercase tracking-wider text-slate-400 block" id="labelValiditySmall">MASA BERLAKU</span>
+<p class="font-extrabold text-[12px] sm:text-[13px] text-slate-900 card-editable" id="cardValidityBadge" title="✏️ Klik untuk Live Edit Masa Berlaku">2024 - 2028</p>
 </div>
 </div>
 </div>
 </div>
-<!-- Bottom Section: Barcode, QR Code & ISO Microtext -->
-<div class="relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-4" id="cardFooterSection">
+<!-- Bottom Section: Barcode, QR Code & ISO Microtext (Enlarged) -->
+<div class="relative z-10 shrink-0 pt-2.5 border-t border-slate-200/90 flex items-center justify-between gap-4" id="cardFooterSection" style="border-color: rgba(226, 232, 240, 0.9);">
 <!-- Linear Barcode Section -->
 <div class="flex items-center gap-3" id="cardBarcodeGroup" style="display: flex;">
-<div class="flex items-center gap-[1.5px] h-5 px-1.5 bg-white border border-slate-300 rounded shadow-2xs">
-<span class="w-[2px] h-4 bg-slate-900"></span>
-<span class="w-[1px] h-4 bg-slate-900"></span>
-<span class="w-[3px] h-4 bg-slate-900"></span>
-<span class="w-[1px] h-4 bg-slate-900"></span>
-<span class="w-[2px] h-4 bg-slate-900"></span>
-<span class="w-[3px] h-4 bg-slate-900"></span>
-<span class="w-[1px] h-4 bg-slate-900"></span>
-<span class="w-[2px] h-4 bg-slate-900"></span>
-<span class="w-[1px] h-4 bg-slate-900"></span>
-<span class="w-[3px] h-4 bg-slate-900"></span>
-<span class="w-[1px] h-4 bg-slate-900"></span>
-<span class="w-[2px] h-4 bg-slate-900"></span>
+<div class="flex items-center gap-[1.5px] h-6 px-2 bg-white border border-slate-300 rounded shadow-2xs">
+<span class="w-[2.5px] h-5 bg-slate-900"></span>
+<span class="w-[1px] h-5 bg-slate-900"></span>
+<span class="w-[3.5px] h-5 bg-slate-900"></span>
+<span class="w-[1.5px] h-5 bg-slate-900"></span>
+<span class="w-[2.5px] h-5 bg-slate-900"></span>
+<span class="w-[3.5px] h-5 bg-slate-900"></span>
+<span class="w-[1px] h-5 bg-slate-900"></span>
+<span class="w-[2.5px] h-5 bg-slate-900"></span>
+<span class="w-[1.5px] h-5 bg-slate-900"></span>
+<span class="w-[3.5px] h-5 bg-slate-900"></span>
+<span class="w-[1px] h-5 bg-slate-900"></span>
+<span class="w-[2.5px] h-5 bg-slate-900"></span>
 </div>
-<div class="text-[7.5px] font-mono font-bold text-slate-500 leading-tight">
-<span class="block" id="cardValidityDisplay">BERLAKU: 2028</span>
-<span class="text-slate-400">SECURE-CR80</span>
+<div class="text-[8.5px] font-mono font-bold text-slate-600 leading-tight">
+<span class="block card-editable" id="cardValidityDisplay" title="✏️ Klik untuk Live Edit Teks Berlaku">BERLAKU: 2028</span>
+<span class="text-slate-400 font-semibold">SECURE-CR80</span>
 </div>
 </div>
 <!-- Microtext & Hash Info -->
-<div class="hidden sm:flex flex-col text-[7px] font-mono text-slate-500 text-center" id="cardHashRow">
-<span id="cardStandardLabel">ISO/IEC 7810 ID-1 • AUTHENTICATED BADGE</span>
-<span class="text-primary font-bold inline-flex items-center justify-center gap-0.5" id="cardHashDisplayWrapper" style="color: rgb(0, 105, 111);">
-<span class="material-symbols-outlined text-[9px]">lock</span>
-<span id="cardHashDisplay">ID-HASH: 9942B</span>
+<div class="hidden sm:flex flex-col text-[8px] font-mono text-slate-600 text-center" id="cardHashRow">
+<span class="font-bold tracking-wide" id="cardStandardLabel">ISO/IEC 7810 ID-1 • AUTHENTICATED BADGE</span>
+<span class="text-primary font-bold inline-flex items-center justify-center gap-1" id="cardHashDisplayWrapper" style="color: rgb(0, 105, 111);">
+<span class="material-symbols-outlined text-[11px]">lock</span>
+<span id="cardHashDisplay" class="">ID-HASH: 9942B-ISO</span>
 </span>
 </div>
-<!-- QR Code Block -->
+<!-- QR Code Block (Enlarged) -->
 <div class="flex items-center gap-1.5 shrink-0" id="cardQrGroup">
-<div class="w-9 h-9 bg-white p-0.5 rounded-lg border border-slate-300 shadow-2xs flex items-center justify-center relative">
-<svg class="w-full h-full text-slate-900" fill="currentColor" viewbox="0 0 24 24">
+<div class="w-11 h-11 bg-white p-1 rounded-lg border border-slate-300 shadow-2xs flex items-center justify-center relative">
+<svg class="w-full h-full text-slate-900" fill="currentColor" viewBox="0 0 24 24">
 <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h4v2h-4v-2zm0 6h4v2h-4v-2zm-4 0h2v2h-2v-2zm0-4h2v2h-2v-2zM6 6h0v0H6zm12 0h0v0h0zM6 18h0v0H6z"></path>
 </svg>
-<div class="absolute inset-0 m-auto w-2.5 h-2.5 rounded-full bg-primary/20 flex items-center justify-center border border-white">
-<span class="material-symbols-outlined text-[7px] text-primary" id="qrIconDot" style="color: rgb(0, 105, 111);">verified</span>
+<div class="absolute inset-0 m-auto w-3 h-3 rounded-full bg-primary/20 flex items-center justify-center border border-white">
+<span class="material-symbols-outlined text-[8px] text-primary" id="qrIconDot" style="color: rgb(0, 105, 111);">verified</span>
 </div>
 </div>
 </div>
 </div>
 </div>
 <!-- ==================== TAMPAK BELAKANG (BACK FACE) ==================== -->
-<div class="rounded-[22px] relative overflow-hidden shadow-[0_28px_65px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.18)] transition-all duration-300 bg-neutral-950 text-white select-none flex flex-col justify-between p-5 hidden w-[340px] sm:w-[540px] md:w-[560px] h-[348px]" id="cardFaceBack">
+<div class="rounded-[24px] relative overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.22)] transition-all duration-300 bg-neutral-950 text-white select-none flex flex-col justify-between p-4 sm:p-6 hidden max-w-full mx-auto w-[340px] sm:w-[570px] md:w-[600px] h-[375px]" id="cardFaceBack">
 <!-- Physical Punch Slot -->
-<div class="w-full flex justify-center -mt-1.5 relative z-10" id="backSlot">
-<div class="w-14 h-2.5 rounded-full bg-[#050608] border border-white/20 shadow-inner"></div>
+<div class="w-full flex justify-center -mt-2 relative z-10" id="backSlot">
+<div class="w-16 h-3 rounded-full bg-[#050608] border border-white/20 shadow-inner"></div>
 </div>
 <!-- Magnetic Stripe (CR80 Standard Hico) -->
-<div class="-mx-5 mt-2 space-y-1 relative z-10" id="backMagStripe">
-<div class="h-12 bg-black w-full shadow-inner flex items-center px-4 justify-between border-y border-neutral-800">
-<span class="text-[7.5px] font-mono text-neutral-400 tracking-wider">TRACK 1 / TRACK 2 HIGH COERCIVITY 4000 Oe</span>
-<span class="text-[7.5px] font-mono text-neutral-300 font-bold">ISO/IEC 7811</span>
+<div class="-mx-6 mt-1 space-y-1 relative z-10" id="backMagStripe">
+<div class="h-14 bg-black w-full shadow-inner flex items-center px-5 justify-between border-y border-neutral-800">
+<span class="text-[8.5px] font-mono text-neutral-400 tracking-wider">TRACK 1 / TRACK 2 HIGH COERCIVITY 4000 Oe</span>
+<span class="text-[9px] font-mono text-neutral-200 font-bold">ISO/IEC 7811</span>
 </div>
 </div>
-<!-- Signature & Security CVC Box -->
+<!-- Signature & Security CVC Box (Enlarged) -->
 <div class="space-y-1.5 pt-2 relative z-10" id="backSignatureBlock">
 <div class="flex items-center justify-between">
-<span class="text-[8px] font-bold text-neutral-300 uppercase tracking-wider">Tanda Tangan Resmi Pemilik</span>
-<span class="text-[7.5px] font-mono text-neutral-400">TIDAK SAH TANPA PARAF</span>
+<span class="text-[9px] font-bold text-neutral-300 uppercase tracking-wider">Tanda Tangan Resmi Pemilik</span>
+<span class="text-[8.5px] font-mono text-neutral-400">TIDAK SAH TANPA PARAF</span>
 </div>
-<div class="h-10 bg-neutral-100 rounded-lg flex items-center justify-between px-3 text-neutral-900 border border-neutral-300 shadow-inner">
-<span class="font-serif italic font-bold text-sm tracking-wide text-neutral-950" id="backSignature">Bima Rizky Bakhtiar</span>
+<div class="h-12 bg-neutral-100 rounded-lg flex items-center justify-between px-4 text-neutral-900 border border-neutral-300 shadow-inner">
+<span class="font-serif italic font-bold text-base tracking-wide text-neutral-950 card-editable" id="backSignature" title="✏️ Klik untuk Live Edit Tanda Tangan">Bima Rizky Bakhtiar</span>
 <div class="text-right">
-<span class="text-[7.5px] font-mono text-neutral-500 uppercase block">SECURE CVC</span>
-<span class="text-[10px] font-mono font-extrabold text-neutral-900 tracking-wider" id="backCvcDisplay">894</span>
+<span class="text-[8.5px] font-mono text-neutral-600 uppercase block font-semibold">SECURE CVC</span>
+<span class="text-[12px] font-mono font-black text-neutral-900 tracking-widest" id="backCvcDisplay">894</span>
 </div>
 </div>
 </div>
-<!-- Official Terms & Compliance Disclaimer -->
-<div class="space-y-1.5 text-neutral-300 text-[8px] leading-relaxed p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10" id="backTermsBlock">
-<span class="font-bold text-white uppercase text-[8.5px] flex items-center gap-1">
-<span class="material-symbols-outlined text-[13px] text-primary-container">info</span>
+<!-- Official Terms & Compliance Disclaimer (Enlarged Font for Clear Reading) -->
+<div class="space-y-1.5 text-neutral-300 text-[9px] sm:text-[9.5px] leading-relaxed p-3 rounded-xl bg-neutral-900/95 border border-neutral-800 relative z-10" id="backTermsBlock">
+<span class="font-bold text-white uppercase text-[9.5px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary-container">info</span>
 <span class="">Ketentuan Pemegang Kartu:</span>
 </span>
 <p class="">1. Kartu ini merupakan properti sah institusi resmi penerbit dan wajib dibawa serta ditunjukkan saat berada di lingkungan formal.</p>
@@ -552,16 +566,16 @@
 <p class="">3. Apabila kartu ini hilang atau ditemukan, mohon segera hubungi biro administrasi / pusat bantuan tertera.</p>
 </div>
 <!-- Institution Hotline & Emergency Contact -->
-<div class="pt-2 border-t border-neutral-800 flex items-center justify-between text-[8px] text-neutral-300 relative z-10" id="backContactBlock">
+<div class="pt-2 border-t border-neutral-800 flex items-center justify-between text-[9px] text-neutral-300 relative z-10" id="backContactBlock">
 <div>
-<span class="block font-bold text-neutral-100">Layanan Dukungan Kredensial:</span>
-<span class="text-neutral-300 font-mono" id="backContactDisplay">helpdesk@universitasdigitalnusantara.ac.id</span>
+<span class="block font-bold text-neutral-100 text-[9.5px]">Layanan Dukungan Kredensial:</span>
+<span class="text-neutral-300 font-mono text-[9px]" id="backContactDisplay">helpdesk@universitasdigitalnusantara.ac.id</span>
 </div>
-<div class="text-right flex items-center gap-1.5 bg-neutral-900 px-2 py-1 rounded-lg border border-neutral-800">
-<span class="material-symbols-outlined text-emerald-400 text-[18px]">verified_user</span>
+<div class="text-right flex items-center gap-2 bg-neutral-900 px-2.5 py-1.5 rounded-lg border border-neutral-800">
+<span class="material-symbols-outlined text-emerald-400 text-[20px]">verified_user</span>
 <div>
-<span class="block font-mono text-emerald-300 font-bold text-[8.5px]">256-BIT ENCRYPTED</span>
-<span class="text-[7px] text-neutral-400 font-mono">HMAC SHA-256</span>
+<span class="block font-mono text-emerald-300 font-extrabold text-[9px]">256-BIT ENCRYPTED</span>
+<span class="text-[8px] text-neutral-400 font-mono">HMAC SHA-256</span>
 </div>
 </div>
 </div>
@@ -569,16 +583,16 @@
 </div>
 </div>
 <!-- Studio Bottom Info Strip -->
-<div class="relative z-20 flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.04] border border-white/10 px-4 py-2.5 rounded-2xl text-xs text-white/80">
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl bg-white/[0.05] border border-white/10 px-4 py-3 rounded-2xl text-xs text-white/80">
 <button class="flex items-center gap-2 hover:text-white transition-colors cursor-pointer text-left" onclick="openValidationModal()" type="button">
 <span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span>
 <span class="font-semibold text-white">Standar ISO/IEC 7810 ID-1 (CR80)</span>
 <span class="text-white/40">•</span>
-<span class="text-neutral-400" id="dimensionDisplay">Dimensi: 85.60 × 53.98 mm (Horizontal CR80)</span>
+<span class="text-neutral-300 font-medium" id="dimensionDisplay">Dimensi: 85.60 × 53.98 mm (Horizontal CR80)</span>
 </button>
 <div class="flex items-center gap-3">
-<button class="flex items-center gap-1 text-emerald-400 font-mono text-[11px] hover:underline cursor-pointer" onclick="openValidationModal()" type="button">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<button class="flex items-center gap-1.5 text-emerald-400 font-mono text-[11px] font-bold hover:underline cursor-pointer" onclick="openValidationModal()" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
 <span class="">Siap Cetak 300 DPI</span>
 </button>
 </div>
@@ -586,6 +600,13 @@
 </div>
 </div>
 </main>
+<!-- Mobile Floating Bottom Action Bar for Easy Preview Jump -->
+<div class="lg:hidden fixed bottom-4 right-4 z-40">
+<button class="px-4 py-3 rounded-full bg-primary text-white font-bold text-xs shadow-xl flex items-center gap-2 border border-white/20 active:scale-95 transition-transform cursor-pointer" id="floatingToggleBtn" onclick="toggleMobileView()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="floatingToggleIcon">visibility</span>
+<span id="floatingToggleText" class="">Lihat Pratinjau Kartu</span>
+</button>
+</div>
 <!-- Global Footer -->
 <footer class="w-full bg-surface-container-low border-t border-surface-container-high/60 py-3.5 px-4 sm:px-8 lg:px-12">
 <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-on-surface-variant text-xs">
@@ -618,8 +639,8 @@
 <p class="text-xs text-on-surface-variant">Pilih preset siap pakai untuk akademisi, instansi pemerintah, dan perusahaan swasta.</p>
 </div>
 </div>
-<button aria-label="Tutup Dialog" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
-<span class="material-symbols-outlined text-[20px]">close</span>
+<button aria-label="Tutup Dialog" class="w-9 h-9 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
 </button>
 </div>
 <!-- Template Cards Grid -->
@@ -639,7 +660,7 @@
 <span class="text-[10px] font-mono text-neutral-500">Gradien Indigo • Minimal Tech</span>
 </div>
 </div>
-<button class="w-full py-2 px-3 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('ktm_modern')" type="button">
+<button class="w-full min-h-[40px] py-2 px-3 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('ktm_modern')" type="button">
 <span class="material-symbols-outlined text-[16px]">check_circle</span>
 <span class="">Terapkan Template</span>
 </button>
@@ -659,7 +680,7 @@
 <span class="text-[10px] font-mono text-neutral-500">Navy &amp; Gold • Formal Klasik</span>
 </div>
 </div>
-<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('asn_bumn')" type="button">
+<button class="w-full min-h-[40px] py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('asn_bumn')" type="button">
 <span class="material-symbols-outlined text-[16px]">check_circle</span>
 <span class="">Terapkan Template</span>
 </button>
@@ -679,7 +700,7 @@
 <span class="text-[10px] font-mono text-neutral-500">Dark Slate • Executive</span>
 </div>
 </div>
-<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('corp_tech')" type="button">
+<button class="w-full min-h-[40px] py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('corp_tech')" type="button">
 <span class="material-symbols-outlined text-[16px]">check_circle</span>
 <span class="">Terapkan Template</span>
 </button>
@@ -699,7 +720,7 @@
 <span class="text-[10px] font-mono text-neutral-500">Emerald Teal • Clean Minimal</span>
 </div>
 </div>
-<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('medis_rs')" type="button">
+<button class="w-full min-h-[40px] py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('medis_rs')" type="button">
 <span class="material-symbols-outlined text-[16px]">check_circle</span>
 <span class="">Terapkan Template</span>
 </button>
@@ -719,7 +740,7 @@
 <span class="text-[10px] font-mono text-neutral-500">Crimson Coral • Holographic</span>
 </div>
 </div>
-<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('event_pass')" type="button">
+<button class="w-full min-h-[40px] py-2 px-3 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="applyPreset('event_pass')" type="button">
 <span class="material-symbols-outlined text-[16px]">check_circle</span>
 <span class="">Terapkan Template</span>
 </button>
@@ -728,7 +749,7 @@
 <!-- Footer -->
 <div class="p-4 sm:px-6 bg-surface-container-low border-t border-surface-container-high flex items-center justify-between text-xs text-on-surface-variant">
 <span class="">Semua template dapat diedit lebih lanjut di editor studio.</span>
-<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container text-on-surface font-bold text-xs transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
+<button class="min-h-[38px] px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container text-on-surface font-bold text-xs transition-colors cursor-pointer" onclick="closeTemplatesModal()" type="button">
 Tutup (Esc)
 </button>
 </div>
@@ -750,8 +771,8 @@ Tutup (Esc)
 <p class="text-xs text-on-surface-variant">Laporan diagnostik otomatis kesiapan cetak standar kartu ID-1 (CR80).</p>
 </div>
 </div>
-<button aria-label="Tutup Dialog" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
-<span class="material-symbols-outlined text-[20px]">close</span>
+<button aria-label="Tutup Dialog" class="w-9 h-9 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
 </button>
 </div>
 <!-- Diagnostic Report Content -->
@@ -837,7 +858,7 @@ Tutup (Esc)
 <!-- Footer -->
 <div class="p-4 sm:px-6 bg-surface-container-low border-t border-surface-container-high flex items-center justify-between">
 <span class="text-xs font-mono text-on-surface-variant">Audit: CERT-ISO7810-CR80-PASS</span>
-<button class="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold text-xs transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
+<button class="min-h-[40px] px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold text-xs transition-colors cursor-pointer" onclick="closeValidationModal()" type="button">
 Tutup
 </button>
 </div>
@@ -853,6 +874,7 @@ Tutup
     orientation: 'landscape',
     face: 'front',
     zoom: 1.0,
+    mobileView: 'editor', // 'editor' | 'preview'
     features: {
       chip: true,
       qr: true,
@@ -909,9 +931,80 @@ Tutup
     }
   };
 
-  // Safe DOM accessor helpers
   function getEl(id) {
     return document.getElementById(id);
+  }
+
+  // Mobile Tabs & View Toggling
+  function switchMobileTab(target) {
+    studioState.mobileView = target;
+    const editorPanel = getEl('editorContainerPanel');
+    const previewPanel = getEl('previewContainerPanel');
+    const tabEdit = getEl('mobileTabEditor');
+    const tabPrev = getEl('mobileTabPreview');
+    const floatingBtnText = getEl('floatingToggleText');
+    const floatingBtnIcon = getEl('floatingToggleIcon');
+
+    if (target === 'preview') {
+      editorPanel.classList.add('hidden');
+      editorPanel.classList.remove('block');
+      previewPanel.classList.remove('hidden');
+      previewPanel.classList.add('flex');
+
+      tabPrev.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-surface-container-lowest text-primary shadow-xs";
+      tabEdit.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface";
+      if (floatingBtnText) floatingBtnText.textContent = "Kembali ke Form Editor";
+      if (floatingBtnIcon) floatingBtnIcon.textContent = "edit";
+      
+      // Auto adapt scale for mobile viewport width
+      if (window.innerWidth < 640 && studioState.zoom > 0.8) {
+        setStudioZoom(0.75);
+      }
+    } else {
+      editorPanel.classList.remove('hidden');
+      editorPanel.classList.add('block');
+      previewPanel.classList.add('hidden');
+      previewPanel.classList.remove('flex');
+
+      tabEdit.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-surface-container-lowest text-primary shadow-xs";
+      tabPrev.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface";
+      if (floatingBtnText) floatingBtnText.textContent = "Lihat Pratinjau Kartu";
+      if (floatingBtnIcon) floatingBtnIcon.textContent = "visibility";
+    }
+  }
+
+  function toggleMobileView() {
+    if (studioState.mobileView === 'editor') {
+      switchMobileTab('preview');
+    } else {
+      switchMobileTab('editor');
+    }
+  }
+
+  // Zoom Transform with complete range: 75%, 100%, 125%, 150%, 200%
+  function setStudioZoom(zoomVal) {
+    studioState.zoom = zoomVal;
+    const container = getEl('cardScaleContainer');
+    if (container) {
+      container.style.transform = `scale(${zoomVal})`;
+    }
+    
+    // Update active UI state on all zoom buttons
+    document.querySelectorAll('.zoom-btn').forEach(b => {
+      const btnZoom = parseFloat(b.getAttribute('data-zoom'));
+      if (Math.abs(btnZoom - zoomVal) < 0.05) {
+        b.className = "zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-bold text-white bg-primary shadow-xs transition-all cursor-pointer";
+      } else {
+        b.className = "zoom-btn min-h-[36px] px-2.5 py-1 rounded text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all cursor-pointer";
+      }
+    });
+
+    const statusBadge = getEl('studioBadgeStatus');
+    if (statusBadge) {
+      const faceName = studioState.face === 'front' ? 'DEPAN' : 'BELAKANG';
+      const orientName = studioState.orientation === 'landscape' ? 'HORIZONTAL' : 'VERTIKAL';
+      statusBadge.textContent = `LIVE STUDIO • CR80 ${orientName} • ${Math.round(zoomVal * 100)}% ZOOM`;
+    }
   }
 
   // Set card face (front / back)
@@ -923,13 +1016,13 @@ Tutup
     const back = getEl('cardFaceBack');
 
     if (side === 'front') {
-      btnFront.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
-      btnBack.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1";
+      btnFront.className = "min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
+      btnBack.className = "min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold text-white/75 hover:text-white transition-all cursor-pointer flex items-center gap-1";
       front.classList.remove('hidden');
       back.classList.add('hidden');
     } else {
-      btnBack.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
-      btnFront.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white transition-all cursor-pointer flex items-center gap-1";
+      btnBack.className = "min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-xs transition-all cursor-pointer flex items-center gap-1";
+      btnFront.className = "min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-bold text-white/75 hover:text-white transition-all cursor-pointer flex items-center gap-1";
       front.classList.add('hidden');
       back.classList.remove('hidden');
     }
@@ -943,11 +1036,11 @@ Tutup
     const btnL = getEl('btnOrientLandscape');
 
     if (orientation === 'landscape') {
-      btnL.className = "py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
-      btnP.className = "py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
+      btnL.className = "min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
+      btnP.className = "min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
     } else {
-      btnP.className = "py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
-      btnL.className = "py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
+      btnP.className = "min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-2xs flex items-center justify-center gap-1 transition-all ring-2 ring-primary/30 cursor-pointer";
+      btnL.className = "min-h-[40px] py-1.5 px-2 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1 transition-all cursor-pointer";
     }
 
     updateCardDimensions();
@@ -959,7 +1052,6 @@ Tutup
     const isLandscape = studioState.orientation === 'landscape';
     const front = getEl('cardFaceFront');
     const back = getEl('cardFaceBack');
-    const clip = getEl('lanyardClip');
     const dim = getEl('dimensionDisplay');
     const statusLabel = getEl('studioBadgeStatus');
 
@@ -973,59 +1065,57 @@ Tutup
     const cardFooterSection = getEl('cardFooterSection');
 
     if (isLandscape) {
-      // Landscape CR80 layout
+      // Landscape CR80 layout with generous fonts and proportions
       [front, back].forEach(el => {
         el.className = el.className
           .replace(/w-\[[0-9a-zA-Z]+\]|sm:w-\[[0-9a-zA-Z]+\]|md:w-\[[0-9a-zA-Z]+\]|h-\[[0-9a-zA-Z]+\]|min-h-\[[0-9a-zA-Z]+\]/g, '')
           .trim();
-        el.classList.add('w-[340px]', 'sm:w-[540px]', 'md:w-[560px]', 'h-[348px]');
+        el.classList.add('w-[340px]', 'sm:w-[570px]', 'md:w-[600px]', 'h-[375px]');
       });
 
       dim.textContent = "Dimensi: 85.60 × 53.98 mm (Horizontal CR80)";
-      if (clip) clip.classList.add('opacity-0', 'pointer-events-none', 'hidden');
-      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 HORIZONTAL (${studioState.mode === 'academic' ? 'MAHASISWA' : 'PROFESIONAL'})`;
+      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 HORIZONTAL • ${Math.round(studioState.zoom * 100)}% ZOOM`;
 
-      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-2.5 grid grid-cols-12 gap-5 items-center";
+      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-3 grid grid-cols-12 gap-5 items-center";
       if (cardPhotoArea) cardPhotoArea.className = "col-span-5 flex items-center gap-3.5";
       if (cardChipMetadataGroup) cardChipMetadataGroup.className = "flex flex-col justify-center items-start gap-2 py-1";
-      if (cardIdentitySection) cardIdentitySection.className = "col-span-7 space-y-2 border-l border-slate-200/90 pl-4";
+      if (cardIdentitySection) cardIdentitySection.className = "col-span-7 space-y-2.5 border-l border-slate-200/90 pl-4 sm:pl-5";
       if (headerIsoBadge) headerIsoBadge.classList.remove('hidden');
       if (chipIsoBadge) chipIsoBadge.classList.remove('hidden');
-      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-2 pt-0.5 text-slate-600 font-mono text-[9px]";
-      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-4";
+      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-3 pt-1 text-slate-600 font-mono";
+      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2.5 border-t border-slate-200/90 flex items-center justify-between gap-4";
 
       // Back side adjustments
       const backMag = getEl('backMagStripe');
       const backTerms = getEl('backTermsBlock');
-      if (backMag) backMag.className = "-mx-5 mt-1 space-y-0.5 relative z-10";
-      if (backTerms) backTerms.className = "space-y-1 text-neutral-300 text-[7.5px] leading-tight p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10";
+      if (backMag) backMag.className = "-mx-6 mt-1 space-y-1 relative z-10";
+      if (backTerms) backTerms.className = "space-y-1.5 text-neutral-300 text-[9px] sm:text-[9.5px] leading-relaxed p-3 rounded-xl bg-neutral-900/95 border border-neutral-800 relative z-10";
     } else {
       // Portrait CR80 layout
       [front, back].forEach(el => {
         el.className = el.className
           .replace(/w-\[[0-9a-zA-Z]+\]|sm:w-\[[0-9a-zA-Z]+\]|md:w-\[[0-9a-zA-Z]+\]|h-\[[0-9a-zA-Z]+\]|min-h-\[[0-9a-zA-Z]+\]/g, '')
           .trim();
-        el.classList.add('w-[340px]', 'sm:w-[350px]', 'h-[538px]');
+        el.classList.add('w-[340px]', 'sm:w-[370px]', 'h-[570px]');
       });
 
       dim.textContent = "Dimensi: 85.60 × 53.98 mm (Vertikal CR80)";
-      if (clip) clip.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
-      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 VERTIKAL (${studioState.mode === 'academic' ? 'MAHASISWA' : 'PROFESIONAL'})`;
+      if (statusLabel) statusLabel.textContent = `LIVE STUDIO • CR80 VERTIKAL • ${Math.round(studioState.zoom * 100)}% ZOOM`;
 
-      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-2 flex flex-col gap-3";
+      if (cardBodySection) cardBodySection.className = "relative z-10 my-auto py-2.5 flex flex-col gap-4";
       if (cardPhotoArea) cardPhotoArea.className = "flex items-start gap-4";
-      if (cardChipMetadataGroup) cardChipMetadataGroup.className = "flex-1 flex flex-col justify-between h-[112px] py-1";
-      if (cardIdentitySection) cardIdentitySection.className = "space-y-1.5 pt-2 border-t border-slate-200/90";
+      if (cardChipMetadataGroup) cardChipMetadataGroup.className = "flex-1 flex flex-col justify-between h-[126px] py-1";
+      if (cardIdentitySection) cardIdentitySection.className = "space-y-2 pt-2.5 border-t border-slate-200/90";
       if (headerIsoBadge) headerIsoBadge.classList.add('hidden');
       if (chipIsoBadge) chipIsoBadge.classList.remove('hidden');
-      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-2 pt-1 text-slate-600 font-mono text-[9px]";
-      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-2";
+      if (cardDetailsGrid) cardDetailsGrid.className = "grid grid-cols-2 gap-3 pt-1 text-slate-600 font-mono";
+      if (cardFooterSection) cardFooterSection.className = "relative z-10 shrink-0 pt-2.5 border-t border-slate-200/90 flex items-center justify-between gap-2";
 
       // Back side adjustments
       const backMag = getEl('backMagStripe');
       const backTerms = getEl('backTermsBlock');
-      if (backMag) backMag.className = "-mx-5 mt-2 space-y-1 relative z-10";
-      if (backTerms) backTerms.className = "space-y-1.5 text-neutral-300 text-[8px] leading-relaxed p-2.5 rounded-xl bg-neutral-900/90 border border-neutral-800 relative z-10";
+      if (backMag) backMag.className = "-mx-6 mt-2 space-y-1 relative z-10";
+      if (backTerms) backTerms.className = "space-y-2 text-neutral-300 text-[9px] leading-relaxed p-3 rounded-xl bg-neutral-900/95 border border-neutral-800 relative z-10";
     }
   }
 
@@ -1033,15 +1123,14 @@ Tutup
   function setDesignStyle(styleName) {
     studioState.style = styleName;
 
-    // Update style buttons state
     const styles = ['minimal', 'academic', 'holo', 'executive'];
     styles.forEach(s => {
       const btn = getEl('style' + s.charAt(0).toUpperCase() + s.slice(1));
       if (btn) {
         if (s === styleName) {
-          btn.className = "style-btn p-2 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20";
+          btn.className = "style-btn min-h-[52px] p-2.5 rounded-xl border-2 border-primary bg-primary/10 text-primary text-left transition-all cursor-pointer ring-2 ring-primary/20";
         } else {
-          btn.className = "style-btn p-2 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer";
+          btn.className = "style-btn min-h-[52px] p-2.5 rounded-xl border border-surface-container-high bg-surface-container-low hover:bg-surface-container text-on-surface text-left transition-all cursor-pointer";
         }
       }
     });
@@ -1054,22 +1143,22 @@ Tutup
 
     if (styleName === 'minimal') {
       card.style.background = "#ffffff";
-      card.style.borderColor = "rgba(0, 105, 111, 0.3)";
+      card.style.borderColor = "rgba(0, 105, 111, 0.35)";
       if (holoLayer) holoLayer.style.display = "block";
       if (cardGuilloche) cardGuilloche.style.opacity = "0.35";
     } else if (styleName === 'academic') {
       card.style.background = "linear-gradient(180deg, #f0f7ff 0%, #ffffff 55%, #ffffff 100%)";
-      card.style.borderColor = "rgba(0, 105, 111, 0.4)";
+      card.style.borderColor = "rgba(0, 105, 111, 0.45)";
       if (holoLayer) holoLayer.style.display = "none";
       if (cardGuilloche) cardGuilloche.style.opacity = "0.5";
     } else if (styleName === 'holo') {
       card.style.background = "linear-gradient(135deg, rgba(236,254,255,0.85) 0%, #ffffff 50%, rgba(243,232,255,0.85) 100%)";
-      card.style.borderColor = "rgba(0, 242, 254, 0.5)";
+      card.style.borderColor = "rgba(0, 242, 254, 0.55)";
       if (holoLayer) holoLayer.style.display = "block";
       if (cardGuilloche) cardGuilloche.style.opacity = "0.4";
     } else if (styleName === 'executive') {
       card.style.background = "#090d16";
-      card.style.borderColor = "rgba(255, 255, 255, 0.15)";
+      card.style.borderColor = "rgba(255, 255, 255, 0.2)";
       if (holoLayer) holoLayer.style.display = "none";
       if (cardGuilloche) cardGuilloche.style.opacity = "0.15";
     }
@@ -1082,7 +1171,6 @@ Tutup
     studioState.color = themeKey;
     applyColorThemeStyles();
 
-    // Update active ring on palette swatches
     document.querySelectorAll('.palette-btn').forEach((btn) => {
       if (btn.getAttribute('data-color') === themeKey) {
         btn.classList.add('ring-2', 'ring-primary', 'ring-offset-2', 'ring-offset-surface-container-lowest');
@@ -1133,8 +1221,8 @@ Tutup
       if (cardNameDisplay) cardNameDisplay.style.color = '#ffffff';
       if (cardOrgDisplay) cardOrgDisplay.style.color = '#f1f5f9';
       if (cardIdDisplay) cardIdDisplay.style.color = '#ffffff';
-      if (cardHeaderBar) cardHeaderBar.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-      if (cardFooterSection) cardFooterSection.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+      if (cardHeaderBar) cardHeaderBar.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+      if (cardFooterSection) cardFooterSection.style.borderColor = 'rgba(255, 255, 255, 0.2)';
 
       if (theme.isDark) {
         if (cardSubtitleDisplay) cardSubtitleDisplay.style.color = '#94a3b8';
@@ -1214,12 +1302,12 @@ Tutup
     const cardSubtitleDisplay = getEl('cardSubtitleDisplay');
 
     if (mode === 'academic') {
-      btnAcad.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer";
-      btnCorp.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer";
+      btnAcad.className = "flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer min-h-[44px]";
+      btnCorp.className = "flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer min-h-[44px]";
 
-      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">school</span><span>Program Studi / Jurusan</span>';
-      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">tag</span><span>Nomor Induk Mahasiswa (NIM)</span>';
-      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">account_balance</span><span>Universitas / Institusi</span>';
+      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">school</span><span>Program Studi / Jurusan</span>';
+      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">tag</span><span>Nomor Induk Mahasiswa (NIM)</span>';
+      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">account_balance</span><span>Universitas / Institusi</span>';
 
       inputName.value = "Bima Rizky Bakhtiar";
       inputRole.value = "Teknik Informatika & Sistem Data";
@@ -1232,12 +1320,12 @@ Tutup
       instIcon.textContent = "school";
       setAvatarPreset('student');
     } else {
-      btnCorp.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer";
-      btnAcad.className = "flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer";
+      btnCorp.className = "flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-xs transition-all duration-200 cursor-pointer min-h-[44px]";
+      btnAcad.className = "flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-xs font-bold text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer min-h-[44px]";
 
-      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">badge</span><span>Jabatan / Divisi</span>';
-      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">pin</span><span>Nomor Pegawai (NIP / EMP ID)</span>';
-      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]">corporate_fare</span><span>Nama Perusahaan / Startup</span>';
+      labelRole.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">badge</span><span>Jabatan / Divisi</span>';
+      labelId.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">pin</span><span>Nomor Pegawai (NIP / EMP ID)</span>';
+      labelOrg.innerHTML = '<span class="material-symbols-outlined text-primary text-[17px]">corporate_fare</span><span>Nama Perusahaan / Startup</span>';
 
       inputName.value = "Bima Rizky Bakhtiar";
       inputRole.value = "Lead Software Architect";
@@ -1258,21 +1346,6 @@ Tutup
     inputValidity.dispatchEvent(new Event('input'));
     applyColorThemeStyles();
     updateCardDimensions();
-  }
-
-  // Zoom Transform
-  function setStudioZoom(zoomVal) {
-    studioState.zoom = zoomVal;
-    getEl('cardScaleContainer').style.transform = `scale(${zoomVal})`;
-    
-    document.querySelectorAll('.zoom-btn').forEach(b => {
-      b.className = "zoom-btn px-2.5 py-1 rounded text-xs text-white/70 hover:text-white cursor-pointer";
-      if ((zoomVal === 0.85 && b.textContent.includes('85')) ||
-          (zoomVal === 1.0 && b.textContent.includes('100')) ||
-          (zoomVal === 1.15 && b.textContent.includes('115'))) {
-        b.className = "zoom-btn px-2.5 py-1 rounded text-xs font-bold text-white bg-white/20 cursor-pointer";
-      }
-    });
   }
 
   // Feature Toggles (Smart Chip, QR, Barcode, Badge)
@@ -1313,7 +1386,7 @@ Tutup
     const preview = getEl('formAvatarPreview');
     const cardImg = getEl('cardAvatarImg');
     const url = type === 'student' 
-      ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'
+      ? 'https://lh3.googleusercontent.com/aida-public/AB6AXuAHNQhWKWzt5YzML1FUNWO5uZmELeWrwnIelqMqyf9TOp4wy9r3RAEe2dbVOvQBKujY-5RcmhAPAqLu89-2PiVCPTohsMxpTW79MeY7S5mgdD4T4VGl-ninvfSRsyEydL5agPSFZspK-8UMlBCDW1WmfjgnZ9lGJnWvQXkjlajX9l8llwPngLqSaKFFFtlFp6POJSReRm5IzNi5gdq6ZGargiD4JZgl7ppqmHtuIUztc60XHUHuoDCk'
       : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';
     if (preview) preview.src = url;
     if (cardImg) cardImg.src = url;
@@ -1453,7 +1526,6 @@ Tutup
       setDesignStyle('holo');
     }
 
-    // Trigger input update listeners
     inputName.dispatchEvent(new Event('input'));
     inputRole.dispatchEvent(new Event('input'));
     inputIdNumber.dispatchEvent(new Event('input'));
@@ -1462,7 +1534,6 @@ Tutup
 
     closeTemplatesModal();
 
-    // Visual notification
     const badge = getEl('studioBadgeStatus');
     if (badge) {
       const oldText = badge.textContent;
@@ -1475,14 +1546,12 @@ Tutup
 
   // Setup DOM and listeners once DOM is fully ready
   document.addEventListener('DOMContentLoaded', () => {
-    // Input elements
     const inputName = getEl('inputName');
     const inputRole = getEl('inputRole');
     const inputIdNumber = getEl('inputIdNumber');
     const inputOrg = getEl('inputOrg');
     const inputValidity = getEl('inputValidity');
 
-    // Display elements
     const cardNameDisplay = getEl('cardNameDisplay');
     const cardRoleDisplay = getEl('cardRoleDisplay');
     const cardIdDisplay = getEl('cardIdDisplay');
@@ -1492,7 +1561,6 @@ Tutup
     const backSignature = getEl('backSignature');
     const backContactDisplay = getEl('backContactDisplay');
 
-    // Attach immediate input listeners
     if (inputName) {
       ['input', 'keyup'].forEach(ev => {
         inputName.addEventListener(ev, (e) => {
@@ -1544,7 +1612,6 @@ Tutup
       });
     }
 
-    // Modal background close
     [getEl('modalTemplates'), getEl('modalValidation')].forEach(modal => {
       if (modal) {
         modal.addEventListener('click', (e) => {
@@ -1556,7 +1623,6 @@ Tutup
       }
     });
 
-    // Keyboard ESC listener
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeTemplatesModal();
@@ -1568,6 +1634,15 @@ Tutup
     setDesignStyle('minimal');
     setColorTheme('blue');
     setOrientation('landscape');
+    setStudioZoom(1.0);
   });
 </script>
+
+
+
+
+
+
+
+
 </body></html>
